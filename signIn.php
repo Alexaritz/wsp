@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$Pasahitza = $_POST["pass"];
 }
  if (isset($_POST['submit'])) {
-	$erab = $mysqli->query( "SELECT * FROM erabiltzaile WHERE Posta=('$Posta') and Pasahitza=('$Pasahitza')" );
+	$erab = $mysqli->query( "SELECT * FROM Erabiltzaile WHERE Posta=('$Posta') and Pasahitza=('$Pasahitza')" );
 	$num_rows=mysqli_num_rows($erab);
 	if ($num_rows> 0){
 		mysqli_close($mysqli);
