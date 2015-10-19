@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head><title>FORMULARIOA</title>
+<script language="JavaScript">
+
+	function balidatuTel(tel){
+		var ptel = new RegExp("[0-9]{9}") ;
+		if (ptel.test(tel)){
+			return true;
+		}else{
+			return false;
+		}	
+	}
+	
+	function balidatuPass(pass){
+		var ppas = new RegExp("[a-zA-Z,0-9]{6,}") ;
+		if (ppas.test(pass)){
+			return true;
+		}else{
+			return false;
+		}	
+	}
+	
+	function hutsaEz(){
+	var frm=document.getElementById("erregistro");
+	var n=5;
+	if(document.getElementById("esp").value=="Besterik"){
+	n=4;
+	}
+		for(i=0;i<frm.elements.length-n;i++){
+			if (frm.elements[i].value=="" || frm.elements[i].value==null){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	function balidatuPosta(posta){
+		var pposta = new RegExp("[a-z]+[0-9]{3}@ikasle(\.e)hu(\.e)(us|s)") ;
+		if (pposta.test(posta)){
+			return true;
+		}else{
+			return false;
+		}	
+	}
+	
+	function izAbAb(izena){
+		var izab = new RegExp("([A-Z]+[a-zA-Z]\s*)");
+		if (izab.test(izena)){
+			return true;
+		}else{return false;}
+	}
+	
+	function balidatu2(){
+	 	if (hutsaEz()){
+			if (balidatuPass(document.getElementById("pass").value)){
+				if (balidatuTel(document.getElementById("tel").value)){
+					if (balidatuPosta(document.getElementById("email").value)){
+						if(izAbAb(document.getElementById("izena").value)){
+							alert("Formularioa ondo bidali da :)")
+							return true;
+						}else{alert("Izena eta bi abizenak sartu behar dituzu, eta bakoitzaren lehen hizkia letra larriz");}
+					}else{
+						alert("EHUko posta sartu behar duzua");
+					}
+				}else{
+					alert("Telefono zenbakiak 9 digitu izan behar ditu.");
+				}
+			}else{
+				alert("Pasahitzak 6 karaktere gutxienez, letrak eta zenbakiak bakarrik.");
+			}
+		}else{
+			alert("Beharrezko* kutxak ezin dira hutsik utzi.");
+		}return false;
+	}
+	function balidatu(){
+	return true;
+	}
+
+	 function irudiaErakutsi(irudia) {
+        var files = irudia.files;
+        for (var i = 0; i < files.length; i++) {           
+            var file = files[i];
+            var imageType = /image.*/;     
+            if (!file.type.match(imageType)) {
+                continue;
+            }           
+            var img=document.getElementById("img");            
+            img.file = file;    
+            var reader = new FileReader();
+            reader.onload = (function(aImg) { 
+                return function(e) { 
+                    aImg.src = e.target.result; 
+                }; 
+            })(img);
+            reader.readAsDataURL(file);
+        }    
+    }
+	
+	function besteEsp(){
+		if (document.getElementById("esp").value=="Besterik"){
+			document.getElementById("besteesp").style.display="inline";
+		}
+		else{
+			document.getElementById("besteesp").style.display="none"; 
+		}
+	}
+</script>
+</head>
+<body>
+<div align="center">
+<h1>Izen-emate formularioa</h1>
+ 
+<form id="erregistro" name="erregistro" onSubmit="return balidatu()" enctype="multipart/form-data" action="Erregistratu.php" method="POST">
+  
+  Izen-abizenak*:
+  <input type="text" name="izena" id="izena" value="" />
+  <br/>
+  Posta elektronikoa*:
+  <input type="text" title="EHUko posta" name="email" id="email" value="" />
+  <br/>
+  Pasahitza*:
+  <input type="password" name="pass" id="pass" value="" />
+  <br/>
+  Telefono Zenbakiak*:
+  <input type="text" name="tel" value="" id="tel" />
+  <br/>
+  Espezialitatea*:
+  <select name="esp" id="esp" onchange="besteEsp()">    
+       <option value="Konputazioa" selected="selected">Konputazioa</option>
+       <option value="Software">Software</option>
+       <option value="Hardware">Hardware</option>
+	   <option value="Besterik">Besterik</option>
+   </select>
+    <br/>
+   <textarea rows="1" cols="20" name="besteesp" id="besteesp" value=""   style="display: none;" ></textarea>
+  <br/>
+  Interesak:
+  <br/>
+  <textarea rows="5" cols="25" name="interesak" id="interesak" value=""  ></textarea>
+  <br/>
+  <input name="uploadedfile" type="file" accept="image/*" onchange="irudiaErakutsi(this)"/>
+  <br/>
+  <img id="img" src="" alt="image" style="width:15%; margin-top:10px;"/>  
+  <br/>
+  <input type="submit" value="Bidali" /> 
+  <input type="reset" value="Borratu" />
+</form>
+<a href='layout.html'>Atzera</a>
+<div align="center">
+</body>
+</html>
+
