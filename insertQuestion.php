@@ -14,14 +14,15 @@
   <br/>
   <button name='submit'	type='submit' value='submit'>Bidali</button>
 <?php
-$servidor = "localhost";//localhost mysql.hostinger.es
-$usuario = "root";//root u266570359_alex
-$password = "";// 7dc3PZD4K8
+session_start();
+$servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
+$usuario = "u266570359_alex";//root u266570359_alex
+$password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 
-session_start();
 
 $mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+//$mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
@@ -32,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$Zail= $_POST["zail"];
 				
 }
- $Posta=$_SESSION["email"]; 
+if(isset ($_SESSION['email']))
+ $Posta=$_SESSION['email']; 
+ // Echo session variables that were set on previous page
 if (isset($_POST['submit'])) {
 	echo'$Posta';
 	$txertatu="INSERT INTO Galdera(galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
@@ -42,6 +45,3 @@ if (isset($_POST['submit'])) {
 <div align="center">
 </body> 
 </html> 
-insertQuestion.php?idePosta=(nameko balioa)
-$nereeposta=$_GET
-			$_POST [idePosta]
