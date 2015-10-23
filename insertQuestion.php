@@ -14,13 +14,16 @@
   <br/>
   <button name='submit'	type='submit' value='submit'>Bidali</button>
 <?php
-$servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
-$usuario = "u266570359_alex";//root u266570359_alex
-$password = "7dc3PZD4K8";// 7dc3PZD4K8
+$servidor = "localhost";//localhost mysql.hostinger.es
+$usuario = "root";//root u266570359_alex
+$password = "";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
+
+session_start();
+
 $mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 if ($mysqli->connect_error) {
-    prinf("Connection failed: " . $mysqli->connect_error);
+    printf("Connection failed: " . $mysqli->connect_error);
 } 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$Posta = $_POST["email"];//HAU NOLA HARTU BEHAR DA?
@@ -29,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$Zail= $_POST["zail"];
 				
 }
+ $Posta=$_SESSION["email"]; 
 if (isset($_POST['submit'])) {
 	echo'$Posta';
 	$txertatu="INSERT INTO Galdera(galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 

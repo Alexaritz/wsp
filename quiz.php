@@ -3,7 +3,7 @@
 <body>
 
 <?php
-$link = mysql_connect ("mysql.hostinger.es","u266570359_alex","7dc3PZD4K8") or die (mysql_error());  //localhost ordez mysql.hostinger.es jarri behar da gero
+$link = mysql_connect ("localhost","root","") or die (mysql_error());  //localhost mysql.hostinger.es root 7dc3PZD4K8
 mysql_select_db("u266570359_quiz", $link) or die(mysql_error());
 
 $erabiltzaileak = mysql_query( "SELECT * FROM Galdera" );
