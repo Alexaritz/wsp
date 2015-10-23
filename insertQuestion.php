@@ -35,12 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $Posta=$_SESSION['email']; 
 // Echo session variables that were set on previous page
 if (isset($_POST['submit'])) {
+	if(!$Zail==""&&$Zail>0&&$Zail<6){
 	$txertatu="INSERT INTO Galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
-	$mysqli -> query($txertatu);
 	if (!$mysqli -> query($txertatu)){
-		die("<p>An error happened: ".$mysqli -> error()."</p>");
+		die("<p>Errorea gertatu da: ".$mysqli -> error()."</p>");
 	}else{
-		echo 'Zuzen sartu dira galderak';
+		echo 'Galdera zuzen sartu da';
+	}
+	}else{
+		echo 'Zailtasuna 1-5 artean.';
 	}
 }else{
 	echo 'Sartu datuak eta sakatu Bidali';
