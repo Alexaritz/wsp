@@ -4,7 +4,7 @@
 <div align="center">
 <form method="post">
 	POSTA:
-  <input type='text' title='EHUko posta' name='email' id='email' value'' />
+  <input type='text' title='EHUko posta' name='email' id='email' value='' />
   <br/>
   PASAHITZA:
   <input type='password' name='pass' id='pass' value='' />
@@ -24,14 +24,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$Pasahitza = $_POST["pass"];
 }
  if (isset($_POST['submit'])) {
-	$erab = $mysqli->query( "SELECT * FROM erabiltzaile WHERE Posta=('$Posta') and Pasahitza=('$Pasahitza')" );
+	$erab = $mysqli->query( "SELECT * FROM Erabiltzaile WHERE Posta=('$Posta') and Pasahitza=('$Pasahitza')" );
 	$num_rows=mysqli_num_rows($erab);
 	if ($num_rows> 0){
 		mysqli_close($mysqli);
-		echo "<p>Datuak zuzenak dira.</p> <p><a href='galderenErregistroa.php'>GALDERAK IKUSI</a></p>   ";
+		//echo "<p>Datuak zuzenak dira.</p> <p><a href='galderenErregistroa.php'>GALDERAK IKUSI</a></p>   ";
+		echo "<p>Datuak zuzenak dira.</p>";
+		header('Location: insertQuestion.php');
 	}
 	else{
 		echo "<p>Datuak ez dira zuzenak</p>";
+		echo"<p><a href='layout.html'>Hasiera orria</a></p>   ";
 	}
 }else{
 	echo 'Sartu datuak eta sakatu Bidali';
