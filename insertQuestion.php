@@ -27,19 +27,25 @@ if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				$Posta = $_POST["email"];//HAU NOLA HARTU BEHAR DA?
 				$Galdera= $_POST["galdera"];
 				$Answ= $_POST["answ"];
 				$Zail= $_POST["zail"];
 				
 }
-if(isset ($_SESSION['email']))
- $Posta=$_SESSION['email']; 
- // Echo session variables that were set on previous page
+$Posta=$_SESSION['email']; 
+// Echo session variables that were set on previous page
 if (isset($_POST['submit'])) {
-	echo'$Posta';
-	$txertatu="INSERT INTO Galdera(galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
+	$txertatu="INSERT INTO Galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
+	$mysqli -> query($txertatu);
+	if (!$mysqli -> query($txertatu)){
+		die("<p>An error happened: ".$mysqli -> error()."</p>");
+	}else{
+		echo 'Zuzen sartu dira galderak';
+	}
+}else{
+	echo 'Sartu datuak eta sakatu Bidali';
 }
+
 ?>
 </form>
 <div align="center">
