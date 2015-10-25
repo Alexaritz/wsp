@@ -33,15 +33,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 }
 $Posta=$_SESSION['email']; 
+$Ekintza='GalderaTxertatu';
+$konId=$_SESSION['konId'];
+$ordua=date('H:i:s');
+$ip=$_SERVER['REMOTE_ADDR'];
+
 // Echo session variables that were set on previous page
 if (isset($_POST['submit'])) {
 	if(!$Zail==""&&$Zail>0&&$Zail<6){
-	$txertatu="INSERT INTO Galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
-	if (!$mysqli -> query($txertatu)){
-		die("<p>Errorea gertatu da: ".$mysqli -> error()."</p>");
-	}else{
-		echo 'Galdera zuzen sartu da';
-	}
+		$txertatu="INSERT INTO Galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
+		if (!$mysqli -> query($txertatu)){
+			die("<p>Errorea gertatu da: ".$mysqli -> error() ."</p>");
+		}else{
+			$txertatu2="INSERT INTO ekintzak (konId, posta, ekintza, ordua, ip) VALUES ('$konId','$Posta','$Ekintza','$ordua', '$ip')"; 
+			if (!$mysqli -> query($txertatu2)){
+				die("<p>Errorea gertatu da: ".$mysqli -> error() ."</p>");
+			}else{
+				echo 'Ekintza zuzen txertatu da.';
+			}
+			echo 'Galdera zuzen sartu da';
+		}
 	}else{
 		echo 'Zailtasuna 1-5 artean.';
 	}
