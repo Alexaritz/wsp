@@ -38,7 +38,7 @@ echo '</table>';
 
 $txertatu2="INSERT INTO ekintzak (konId, posta, ekintza, ordua, ip) VALUES ('$konId','$Posta','$Ekintza','$ordua', '$ip')"; 
 if (!$mysqli -> query($txertatu2)){
-				die("<p>Errorea gertatu da: ".$mysqli -> error() ."</p>");
+				die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 			}else{
 				echo 'Ekintza zuzen txertatu da.';
 			}

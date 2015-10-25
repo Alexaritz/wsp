@@ -40,7 +40,7 @@ echo "Session variables are set.";
 		$_SESSION['email'] = $Posta;
 		$txertatu="INSERT INTO Konexioak (posta, ordua) VALUES ('$Posta', '$ordua')"; 
 		if (!$mysqli -> query($txertatu)){
-			die("<p>Errorea gertatu da: ".$mysqli -> error() ."</p>");
+			die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 		}
 		$KonId = $mysqli->query( "SELECT konId FROM konexioak WHERE posta=('$Posta') and ordua=('$ordua')" );
 		if ($KonId->num_rows>0){
