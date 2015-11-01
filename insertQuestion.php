@@ -15,25 +15,15 @@
   <button name='submit'	type='submit' value='submit'>Bidali</button>
 <?php
 session_start();
-
-$xml = simplexml_load_file('galderak.xml');
-$galdera = $xml->addChild('galdera');
-$galdera->addChild('galderatestua',$Galdera);
-$galdera->addChild('answ',$Answ);
-$galdera->addAttribute('zail',$Zail);
-$galdera->addAttribute('subject','');
-echo $xml->asXML();
-$xml->asXML('galderak.xml');
-
-
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 
 
-//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
-$mysqli =new mysqli ("localhost:1234","root","", $sdb);
+$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+
+//$mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
@@ -43,6 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$Zail= $_POST["zail"];
 				
 }
+
+
+
+
+
+
+
 $Posta=$_SESSION['email']; 
 $Ekintza='GalderaTxertatu';
 $konId=$_SESSION['konId'];
@@ -61,6 +58,20 @@ if (isset($_POST['submit'])) {
 				die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 			}else{
 				echo 'Ekintza zuzen txertatu da.';
+				$xml = simplexml_load_file('galderak.xml');
+				$assessmentItem = $xml->addChild('assessmentItem');
+				$assessmentItem->addAttribute('konpl',$Zail);
+				$assessmentItem->addAttribute('subject','');
+				$itemBody= $assessmentItem ->addChild('itemBody');
+				$itemBody->addChild('p',$Galdera);
+				$correctResponse= $assessmentItem-> addChild('correctResponse');
+				$correctResponse->addChild('value',$Answ);
+				
+				//echo $xml->asXML();
+				$xml->asXML('galderak.xml');
+				echo "<a href ='seeXMLQuestions.php'>Ikusi galderak</a><br>";
+				
+				
 			}
 			echo 'Galdera zuzen sartu da';
 		}
@@ -73,6 +84,8 @@ if (isset($_POST['submit'])) {
 
 ?>
 </form>
+<a href='layout.html'>Hasiera</a>
+<br/>
 <div align="center">
 </body> 
 </html> 

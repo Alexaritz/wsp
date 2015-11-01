@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <assessmentItems>
 	<assessmentItem konplexutasuna="3" subject="Mikologia">
 		<itemBody> 
@@ -16,4 +16,4 @@
 			<value>Phalloides</value>
 		</correctResponse>
 	</assessmentItem>
-</assessmentItems>
+<galdera zail="" subject=""><galderatestua/><answ/></galdera><galdera zail="" subject=""><galderatestua/><answ/></galdera><galdera zail="" subject=""><galderatestua/><answ/></galdera><galdera zail="" subject=""><galderatestua/><answ/></galdera><galdera zail="" subject=""><galderatestua/><answ/></galdera><galdera zail="5" subject=""><galderatestua>Zenbat?</galderatestua><answ>1</answ></galdera><assessmentItem zail="5" subject=""><itemBody><galderatestua>PRUEBA DA?</galderatestua></itemBody><correctResponse><answ>BAI</answ></correctResponse></assessmentItem><assessmentItem konplexutasuna="5" subject=""><itemBody><p>PRUEBA DA?</p></itemBody><correctResponse><value>BAI</value></correctResponse></assessmentItem><assessmentItem konpl="5" subject=""><itemBody><p>PRUEBA DA?</p></itemBody><correctResponse><value>BAI</value></correctResponse></assessmentItem><assessmentItem konpl="5" subject=""><itemBody><p>PRUEBA DA?</p></itemBody><correctResponse><value>BAI</value></correctResponse></assessmentItem><assessmentItem konpl="5" subject=""><itemBody><p>PRUEBA DA?</p></itemBody><correctResponse><value>BAI</value></correctResponse></assessmentItem><assessmentItem konpl="2" subject=""><itemBody><p>sad</p></itemBody><correctResponse><value>a</value></correctResponse></assessmentItem><assessmentItem konpl="2" subject=""><itemBody><p>asda</p></itemBody><correctResponse><value>adsdsaad</value></correctResponse></assessmentItem><assessmentItem konpl="2" subject=""><itemBody><p>a</p></itemBody><correctResponse><value>sad</value></correctResponse></assessmentItem><assessmentItem konpl="2" subject=""><itemBody><p>a</p></itemBody><correctResponse><value>sad</value></correctResponse></assessmentItem><assessmentItem konpl="2" subject=""><itemBody><p>a</p></itemBody><correctResponse><value>sad</value></correctResponse></assessmentItem><assessmentItem konpl="1" subject=""><itemBody><p>1</p></itemBody><correctResponse><value>1</value></correctResponse></assessmentItem></assessmentItems>

@@ -2,6 +2,8 @@
 <head><title>DATU BASEAN DAUDEN ERABILTZAILEAK</title>
 <body>
 
+<div align="center">
+<h1>GALDERAK</h1>
 <?php
 session_start();
 
@@ -40,9 +42,9 @@ $txertatu2="INSERT INTO ekintzak (konId, posta, ekintza, ordua, ip) VALUES ('$ko
 if (!$mysqli -> query($txertatu2)){
 				die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 			}else{
-				echo 'Ekintza zuzen txertatu da.';
 			}
 ?>
-
+<a href='layout.html'>Hasiera</a>
+</div>
 </body> 
 </html> 

@@ -60,6 +60,7 @@ echo "Session variables are set.";
 }
 ?>
 </form>
+<a href='layout.html'>Hasiera</a>
 <div align="center">
 </body> 
 </html> 
