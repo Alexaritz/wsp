@@ -15,14 +15,25 @@
   <button name='submit'	type='submit' value='submit'>Bidali</button>
 <?php
 session_start();
+
+$xml = simplexml_load_file('galderak.xml');
+$galdera = $xml->addChild('galdera');
+$galdera->addChild('galderatestua',$Galdera);
+$galdera->addChild('answ',$Answ);
+$galdera->addAttribute('zail',$Zail);
+$galdera->addAttribute('subject','');
+echo $xml->asXML();
+$xml->asXML('galderak.xml');
+
+
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 
 
-$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
-//$mysqli =new mysqli ("localhost","root","", $sdb);
+//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+$mysqli =new mysqli ("localhost:1234","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
