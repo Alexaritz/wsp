@@ -1,7 +1,8 @@
 <html>
 <head><title>GALDEREN MANEIUA</title>
-<script language="JavaScript">
-	XMLHttpRequest = new XMLHttpRequest();
+<script type="text/javascript" language = "javascript">
+	XMLHttpRequestObject = new XMLHttpRequestObject();
+	
 	XMLHttpRequestObject.onreadystatechange = function(){
 	alert(XMLHttpRequestObject.readyState);
 	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
@@ -9,8 +10,8 @@
 }}
 	function galderakIkusi(){
 	alert('ALex');
-	XMLHttpRequest.open("GET","gureGalderak.php", true);
-	XMLHttpRequest.send();
+	XMLHttpRequestObject.open("GET","gureGalderak.php", true);
+	XMLHttpRequestObject.send();
 	}
 	function galderaTxertatu(){
 	var zail=document.getElementById("zail").value;
