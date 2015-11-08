@@ -21,9 +21,9 @@ $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 
 
-//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 
-$mysqli =new mysqli ("localhost","root","", $sdb);
+//$mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
@@ -46,7 +46,6 @@ $konId=$_SESSION['konId'];
 $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
-// Echo session variables that were set on previous page
 if (isset($_POST['submit'])) {
 	if(!$Zail==""&&$Zail>0&&$Zail<6){
 		$txertatu="INSERT INTO Galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 

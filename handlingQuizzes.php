@@ -3,27 +3,44 @@
 <script type="text/javascript" language = "javascript" >
 	XMLHttpRequestObject = new XMLHttpRequest();
 	
+	
+	
+	function galderakIkusi(){
+	XMLHttpRequestObject.open("POST","gureGalderak.php", true);
 	XMLHttpRequestObject.onreadystatechange = function(){
-	alert(XMLHttpRequestObject.readyState);
 	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
 		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
 	}}
-	
-	function galderakIkusi(){
-	alert('ALex');
-	XMLHttpRequestObject.open("POST","gureGalderak.php", true);
 	XMLHttpRequestObject.send();
 	}
+	function galderaTxertatu2(){
+	var galdera=document.getElementById("galdera").value;
+	var answ=document.getElementById("answ").value;
+	var zail=document.getElementById("zail").value;
+	var param= "galdera="+galdera+"&answ="+answ+"&zail="+zail;
 	
-	function galderaTxertatu(){
-	alert('tu');
 	XMLHttpRequestObject.open("POST","sartuGaldera.php", true);
-	XMLHttpRequestObject.send();
+	XMLHttpRequestObject.onreadystatechange = function(){
+	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
+		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
+	}}
+	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	XMLHttpRequestObject.send(param);
 	}
 	
+	function galderaKop(){
+	XMLHttpRequestObject.open("POST","galderaKop.php", true);
+	XMLHttpRequestObject.onreadystatechange = function(){
+	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
+		document.getElementById('kop').innerHTML=XMLHttpRequestObject.responseText;
+	}}
+	XMLHttpRequestObject.send();
+	}
+	setInterval(galderaKop,5000);
+
 </script>
 </head>
-<body>
+<body >
 <div align="center">
 <form onsubmit="return false;">
 	GALDERA*:
@@ -35,11 +52,14 @@
   ZAILTASUNA(1-5 bitartean):
   <input type='number' name='zail' id='zail' value='' />
   <br/> 
-  <input type="button" name="galderaTxertatu" value="Galdera Txertatu" onclick='galderaTxertatu()'/>
+  <input type="button" name="galderaTxertatu" value="Galdera Txertatu" onclick='galderaTxertatu2()'/>
   <input type="button" name="galderaIkusi" value="Galderak Ikusi" onclick='galderakIkusi()'/>
  </form>
   <div id="hint" style="background-color:#99FF66;">
 	<p>Nire kideak hemen agertuko agertuko dira...</p>
+  </div>
+   <div id="kop" style="background-color:#99FF66;">
+	<p>Galderak hemen agertuko dira...</p>
   </div>
 <?php
 session_start();

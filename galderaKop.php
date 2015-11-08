@@ -3,7 +3,6 @@
 <body>
 
 <div align="center">
-<h1>GALDERAK</h1>
 <?php
 session_start();
 
@@ -25,26 +24,12 @@ if (!isset($_SESSION['email'])) {
 	$konId=$_SESSION['konId'];
 }
 
-$erabiltzaileak = mysqli_query($mysqli, "SELECT * FROM Galdera" );
-echo '<table border=1>
-<tr>
-<th> Galdera </th>
-<th> Zailtasuna </th>
-</tr>';
-
-while( $row = mysqli_fetch_array( $erabiltzaileak )) {
-	echo '<tr><td>'.$row['galdera'].'</td> <td>'. $row['zailtasuna'].'</td></tr>';
-}
-
-echo '</table>';
-
-$txertatu2="INSERT INTO ekintzak (konId, posta, ekintza, ordua, ip) VALUES ('$konId','$Posta','$Ekintza','$ordua', '$ip')"; 
-if (!$mysqli -> query($txertatu2)){
-				die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
-			}else{
-			}
+$erab = mysqli_query($mysqli, "SELECT * FROM Galdera" );
+	$num_rows=mysqli_num_rows($erab);
+	$erab2 = mysqli_query($mysqli, "SELECT * FROM Galdera WHERE Posta=('$Posta')" );
+	$num_rows2=mysqli_num_rows($erab2);
+	echo 'Datu basean '.$num_rows. ' galdera daude eta hauetatik '.$num_rows2.' zuk sartutakoak dira';
 ?>
-<a href='layout.html'>Hasiera</a>
 </div>
 </body> 
 </html> 
