@@ -1,32 +1,31 @@
 <html>
 <head><title>GALDEREN MANEIUA</title>
-<script type="text/javascript" language = "javascript">
-	XMLHttpRequestObject = new XMLHttpRequestObject();
+<script type="text/javascript" language = "javascript" >
+	XMLHttpRequestObject = new XMLHttpRequest();
 	
 	XMLHttpRequestObject.onreadystatechange = function(){
 	alert(XMLHttpRequestObject.readyState);
 	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-		document.getElementById("txtHint").innerHTML=XMLHttpRequestObject.responseText;
-}}
+		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
+	}}
+	
 	function galderakIkusi(){
 	alert('ALex');
-	XMLHttpRequestObject.open("GET","gureGalderak.php", true);
+	XMLHttpRequestObject.open("POST","gureGalderak.php", true);
 	XMLHttpRequestObject.send();
 	}
+	
 	function galderaTxertatu(){
-	var zail=document.getElementById("zail").value;
-	if(zail!=""&&zail>0&&zail<6){
-		XMLHttpRequestObject.open("GET","sartuGaldera.php", true);
-		XMLHttpRequestObject.send();
-	}else{
-		alert('Zailtasuna 1-5 artean.');
+	alert('tu');
+	XMLHttpRequestObject.open("POST","sartuGaldera.php", true);
+	XMLHttpRequestObject.send();
 	}
-	}
+	
 </script>
 </head>
 <body>
 <div align="center">
-<form method="post">
+<form onsubmit="return false;">
 	GALDERA*:
   <input type='text' title='galdera' name='galdera' id='galdera' value='' /> 
   <br/>
@@ -36,11 +35,10 @@
   ZAILTASUNA(1-5 bitartean):
   <input type='number' name='zail' id='zail' value='' />
   <br/> 
- <button onclick="galderaTxertatu()">Galdera Txertatu</button>
- <button onclick="galderakIkusi()">Galderak Ikusi</button>
-
+  <input type="button" name="galderaTxertatu" value="Galdera Txertatu" onclick='galderaTxertatu()'/>
+  <input type="button" name="galderaIkusi" value="Galderak Ikusi" onclick='galderakIkusi()'/>
  </form>
-  <div id="txtHint" style="background-color:#99FF66;">
+  <div id="hint" style="background-color:#99FF66;">
 	<p>Nire kideak hemen agertuko agertuko dira...</p>
   </div>
 <?php

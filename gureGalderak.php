@@ -7,7 +7,9 @@ $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 $mysqli =new mysqli ("localhost","root","", $sdb);
 //$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
-
+if ($mysqli->connect_errno){
+	die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
+}
 $Ekintza='GalderakIkusi';
 $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -18,7 +20,6 @@ if (!isset($_SESSION['email'])) {
 	$Posta=$_SESSION['email'];
 	$konId=$_SESSION['konId'];
 }
-echo 'asd';
 $erabiltzaileak = $mysqli->query("SELECT * FROM Galdera WHERE posta='$Posta'");
 $num_rows=mysqli_num_rows($erabiltzaileak);
 	if ($num_rows> 0){
