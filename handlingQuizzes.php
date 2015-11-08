@@ -69,9 +69,9 @@ $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 
 
-//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 
-$mysqli =new mysqli ("localhost","root","", $sdb);
+//$mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
