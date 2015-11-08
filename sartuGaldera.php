@@ -46,7 +46,6 @@ if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
 				$correctResponse->addChild('value',$Answ);
 				
 				$xml->asXML('galderak.xml');
-				echo "<a href ='seeXMLQuestions.php'>Ikusi galderak</a><br>";
 				
 				
 			}
