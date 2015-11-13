@@ -1,26 +1,50 @@
 <?php
-//nusoap.php klasea gehitzen dugu
 require_once('lib/nusoap.php');
 require_once('lib/class.wsdlcache.php');
-
-
-//soap_server motako objektua sortzen dugu
-$ns="http://localhost/nusoap-0.9.5/samples"; //name of the service
+$ns="http://localhost/ikasleak/egiaztatuPasahitza.php?wsdl"; //name of the service
 $server = new soap_server;
-$server->configureWSDL('passKonprobatu',$ns);
+$server->configureWSDL('egiaztatuPasahitza',$ns);
 $server->wsdl->schemaTargetNamespace=$ns;
 
-//inplementatu nahi dugun funtzioa erregistratzen dugupggg
-//funtzio bat baino gehiago erregistra liteke ...
-$server->register('passKonprobatu',
-array('x'=>'xsd:int','y'=>'xsd:int'),
-array('z'=>'xsd:int')array(z=>xsd:int),
-$ns);
+$server->register('egiaztatuPasahitza',array('x'=>'xsd:string'),array('z'=>'xsd:string'),$ns);
 
-//funtzioa inplementatzen da
-function passKonprobatu($x, $y){
-	$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
-return $x + $y;
+function egiaztatuPasahitza($x){
+	$A='BALIOGABEA';
+	return $A;
+	/*$file= fopen("Top500.txt","r");
+	$pass=trim(utf8_encode($x));
+	if($file){
+		while(($buffer= fgets($file))!==false){
+				$ir=trim(utf8_encode($buffer));
+			if($pass==$ir)
+				return "BALIOGABEA";
+		}
+		if(!feof($file)){
+			echo"Errorea: fgets() errorea eman du\n";			
+		}else{
+			return"BALIOZKOA";
+		}/*echo count($file).'<br>';
+		foreach($file as $name)
+		{
+			echo $name.'<br>';
+		}*/
+		/*	$fclose($file);
+	}else{
+		echo"Ezin izan da fitxategia iriki";
+	}
+	*/
+	
+	
+	
+	/*$myfile = fopen("Top500.txt", "r") or die("Unable to open file!");
+	while (!feof($myfile)){
+		$y=fgets($myfile);
+		if($pass==$y){
+			return "Baliozkoa.";
+		}
+	}
+	return "Baliogabea.";
+	$fclose($file);*/
 }
 
 //nusoap klaseko service metodoari dei egiten diogu
