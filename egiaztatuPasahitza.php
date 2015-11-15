@@ -9,6 +9,7 @@ $server->wsdl->schemaTargetNamespace=$ns;
 $server->register('egiaztatuPasahitza',array('x'=>'xsd:string'),array('z'=>'xsd:string'),$ns);
 
 function egiaztatuPasahitza($x){
+return 'BALIOZKOA';
 	/*$file= fopen("Top500.txt","r");
 	$pass=trim(utf8_encode($x));
 	if($file){
@@ -33,8 +34,12 @@ function egiaztatuPasahitza($x){
 	*/
 	
 	
+
 	
-	$myfile = fopen("Top500.txt", "r") or die("Unable to open file!");
+	
+	
+	
+	/*$myfile = fopen("Top500.txt", "r") or die("Unable to open file!");
 	while (!feof($myfile)){
 		$y=fgets($myfile);
 		if($x==$y){
@@ -42,7 +47,7 @@ function egiaztatuPasahitza($x){
 		}
 	}
 	return "BALIOGABEA";
-	$fclose($file);
+	$fclose($file);*/
 }
 
 //nusoap klaseko service metodoari dei egiten diogu
