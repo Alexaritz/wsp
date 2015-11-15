@@ -2,7 +2,7 @@
 <html>
 <head><title>FORMULARIOA</title>
 <script type="text/javascript" language = "javascript" >
-	XMLHttpRequestObject = new XMLHttpRequest();
+	
 	
 	function hutsaEz(){
 	var email=document.getElementById("email").value;
@@ -20,12 +20,12 @@
 	
 	
 	function bidali(){
+		XMLHttpRequestObject = new XMLHttpRequest();
 		if (hutsaEz()){
 			XMLHttpRequestObject.open("POST","bezeroa.php", true);
 			
 			var email=document.getElementById("email").value;
 			var param= "email="+email;
-			
 			XMLHttpRequestObject.onreadystatechange = function(){
 			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
 				document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
@@ -37,18 +37,19 @@
 		}
 	}
 	function bidali2(){
+		XMLHttpRequestObject2 = new XMLHttpRequest();
 		if (hutsaEz()){
-			XMLHttpRequestObject.open("POST","pasahitzak.php", true);
+			XMLHttpRequestObject2.open("POST","pasahitzak.php", true);
 			
 			var pass=document.getElementById("pass").value;
 			var param= "pass="+pass;
 			
-			XMLHttpRequestObject.onreadystatechange = function(){
-			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-				document.getElementById('hint2').innerHTML=XMLHttpRequestObject.responseText;
+			XMLHttpRequestObject2.onreadystatechange = function(){
+			if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
+				document.getElementById('hint2').innerHTML=XMLHttpRequestObject2.responseText;
 			}}
-			XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			XMLHttpRequestObject.send(param);
+			XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			XMLHttpRequestObject2.send(param);
 		}else{
 			alert('Hutsik ez utzi.');
 		}
