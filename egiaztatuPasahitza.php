@@ -9,7 +9,24 @@ $server->wsdl->schemaTargetNamespace=$ns;
 $server->register('egiaztatuPasahitza',array('x'=>'xsd:string'),array('z'=>'xsd:string'),$ns);
 
 function egiaztatuPasahitza($x){
-return 'BALIOZKOA';
+	$pass=trim(utf8_encode($x));	
+	echo $pass;
+	$bai=FALSE;
+	$myfile = fopen("Top500.txt", "r") or die("Unable to open file!");
+	
+	while (!feof($myfile)){
+		$y=fgets($myfile);
+		if($x==$y){
+			$bai=TRUE;
+		}
+	}
+	if ($bai){
+		return 'BALIOZKOA';
+	}else{
+		return 'BALIOGABEA';
+	}
+	$fclose($file);
+}	
 	/*$file= fopen("Top500.txt","r");
 	$pass=trim(utf8_encode($x));
 	if($file){
@@ -32,23 +49,7 @@ return 'BALIOZKOA';
 		echo"Ezin izan da fitxategia iriki";
 	}
 	*/
-	
-	
 
-	
-	
-	
-	
-	/*$myfile = fopen("Top500.txt", "r") or die("Unable to open file!");
-	while (!feof($myfile)){
-		$y=fgets($myfile);
-		if($x==$y){
-			return "BALIOZKOA";
-		}
-	}
-	return "BALIOGABEA";
-	$fclose($file);*/
-}
 
 //nusoap klaseko service metodoari dei egiten diogu
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';

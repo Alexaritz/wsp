@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (isset($_POST['pass'])){
 	echo $soapclient->call('egiaztatuPasahitza',array('x'=>$Pass));
-	if ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass))=="BALIOGABEA"){
+	if ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass))=='BALIOGABEA'){
 		echo '<h1>Zuzena da? Ez.</h1>';
 	}elseif ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass))=='BALIOZKOA'){
 		echo '<h1>Zuzena da? Bai.</h1>';
@@ -22,10 +22,10 @@ if (isset($_POST['pass'])){
 		echo 'Errorea.';
 	}
 }
-//echo '<h2>Request</h2><pre>'.htmlspecialchars($soapclient->request, ENT_QUOTES).'</pre>';
-//echo ' <h2> Response </h2><pre> '.htmlspecialchars($soapclient->response, ENT_QUOTES).'< pre>';
+echo '<h2>Request</h2><pre>'.htmlspecialchars($soapclient->request, ENT_QUOTES).'</pre>';
+echo ' <h2> Response </h2><pre> '.htmlspecialchars($soapclient->response, ENT_QUOTES).'< pre>';
 
-//echo '<h2>Debug</h2>';
-//echo '<pre>' . htmlspecialchars($soapclient->debug_str, ENT_QUOTES) . '</pre>';
+echo '<h2>Debug</h2>';
+echo '<pre>' . htmlspecialchars($soapclient->debug_str, ENT_QUOTES) . '</pre>';
 //}
 ?>
