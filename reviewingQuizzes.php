@@ -3,13 +3,11 @@
 <script type="text/javascript" language = "javascript" >
 	XMLHttpRequestObject = new XMLHttpRequest();
 		
-	function galderaEditatu(){
-	var galdera=document.getElementById("galdera").value;
-	var answ=document.getElementById("answ").value;
-	var zail=document.getElementById("zail").value;
-	var param= "galdera="+galdera+"&answ="+answ+"&zail="+zail;
+	function galderaEditatu2(){
+	var id=document.getElementById("idedit").value;
+	var param= "id="+id;
 	
-	XMLHttpRequestObject.open("POST","sartuGaldera.php", true);
+	XMLHttpRequestObject.open("POST","galderaEditatu.php", true);
 	XMLHttpRequestObject.onreadystatechange = function(){
 	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
 		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
@@ -72,7 +70,10 @@ $num_rows=mysqli_num_rows($erabiltzaileak);
 Sartu editatu nahi nuzun galderaren id zenbakia:
   <input type='text' title='idedit' name='idedit' id='idedit' value='' /> 
   <br/>
-  <input type="submit" name="editatugaldera" value="editatu galdera" />
+ <input type="button" name="galderaEditatu" value="Galdera Editatu" onclick='galderaEditatu2()'/>
+   <div id="hint" style="background-color:#99FF66;">
+	<p>Formularioa hemen agertuko da...</p>
+  </div>
   
 </form>
 </body>
