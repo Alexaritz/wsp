@@ -43,7 +43,8 @@
 			
 			
 			var pass=document.getElementById("pass").value;
-			var param= "pass="+pass;
+			var pass2=document.getElementById("pass2").value;
+			var param= "pass="+pass+"&pass2="+pass2;
 			
 			XMLHttpRequestObject2.onreadystatechange = function(){
 			if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
@@ -72,6 +73,10 @@
   <br/>
   Pasahitza*:
   <input type="password" name="pass" id="pass" value="" />
+  <br/>
+  Sar ezazu pasahiza berriz:
+  <input type="password" name="pass2" id="pass2" value="" />
+  <br/>
   <input type="button" name="Bidali" value="Bidali" onclick='bid()'/>
   <input type="reset" value="Borratu" />
   <div id="hint" style="background-color:#99FF66;">

@@ -2,6 +2,8 @@
 <head><title>GALDEREN MANEIUA</title>
 <script type="text/javascript" language = "javascript" >
 	XMLHttpRequestObject = new XMLHttpRequest();
+	XMLHttpRequestObject2 = new XMLHttpRequest();
+	XMLHttpRequestObject3 = new XMLHttpRequest();
 	
 	
 	
@@ -19,22 +21,22 @@
 	var zail=document.getElementById("zail").value;
 	var param= "galdera="+galdera+"&answ="+answ+"&zail="+zail;
 	
-	XMLHttpRequestObject.open("POST","sartuGaldera.php", true);
-	XMLHttpRequestObject.onreadystatechange = function(){
-	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
+	XMLHttpRequestObject2.open("POST","sartuGaldera.php", true);
+	XMLHttpRequestObject2.onreadystatechange = function(){
+	if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
+		document.getElementById('hint').innerHTML=XMLHttpRequestObject2.responseText;
 	}}
-	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	XMLHttpRequestObject.send(param);
+	XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	XMLHttpRequestObject2.send(param);
 	}
 	
 	function galderaKop(){
-	XMLHttpRequestObject.open("POST","galderaKop.php", true);
-	XMLHttpRequestObject.onreadystatechange = function(){
-	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-		document.getElementById('kop').innerHTML=XMLHttpRequestObject.responseText;
+	XMLHttpRequestObject3.open("POST","galderaKop.php", true);
+	XMLHttpRequestObject3.onreadystatechange = function(){
+	if ((XMLHttpRequestObject3.readyState==4)&&(XMLHttpRequestObject3.status==200 )){ 
+		document.getElementById('kop').innerHTML=XMLHttpRequestObject3.responseText;
 	}}
-	XMLHttpRequestObject.send();
+	XMLHttpRequestObject3.send();
 	}
 	setInterval(galderaKop,5000);
 
@@ -69,9 +71,9 @@ $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
 
 
-$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 
-//$mysqli =new mysqli ("localhost","root","", $sdb);
+$mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
