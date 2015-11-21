@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["email"])){
+		header("Location: errorea.php");
+}
+?>
 <html>
 <head><title>GALDERAK EDITATU</title>
 <script type="text/javascript" language = "javascript" >
@@ -20,7 +26,6 @@
 <body>
 <div align="center">
 <?php
-session_start();
 
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex

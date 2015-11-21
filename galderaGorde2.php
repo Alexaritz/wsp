@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION["email"])){
+		header("Location: errorea.php");
+}
+
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
@@ -15,10 +19,12 @@ if ($mysqli->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$Answ= $_POST["answ"];
 		$Zail= $_POST["zail"];
-		$Galdera= $_POST["galdera"];		
+		$Galdera= $_POST["galdera"];	
+		$Id= $_POST["id"];		
 				
 				
 }
+echo $Id;
 echo $Answ;
 echo $Zail;
 echo $Galdera;
@@ -30,7 +36,7 @@ $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
 if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
-		$txertatu="Update Galdera set galdera='$Galdera', erantzuna='$Answ', zailtasuna='$Zail'"; 
+		$txertatu="Update Galdera set galdera='$Galdera', erantzuna='$Answ', zailtasuna='$Zail' where id='$Id'"; 
 		if (!$mysqli -> query($txertatu)){
 			die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 		}else{

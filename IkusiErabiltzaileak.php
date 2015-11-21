@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["email"])){
+		header("Location: errorea.php");
+}
+?>
 <html>
 <head><title>DATU BASEAN DAUDEN ERABILTZAILEAK</title>
 <body>

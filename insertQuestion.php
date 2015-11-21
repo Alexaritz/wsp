@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["email"])){
+		header("Location: errorea.php");
+}
+?>
 <html>
 <head><title>Galderak</title>
 <body>
@@ -14,7 +20,7 @@
   <br/>
   <button name='submit'	type='submit' value='submit'>Bidali</button>
 <?php
-session_start();
+
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8

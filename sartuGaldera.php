@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION["email"])){
+		header("Location: errorea.php");
+}
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8

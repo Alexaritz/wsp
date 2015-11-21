@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["email"])){
+		header("Location: errorea.php");
+}
+?>
 <html>
 <head><title>GALDEREN MANEIUA</title>
 <script type="text/javascript" language = "javascript" >
@@ -64,7 +70,6 @@
 	<p>Galderak hemen agertuko dira...</p>
   </div>
 <?php
-session_start();
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
