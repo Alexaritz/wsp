@@ -24,15 +24,18 @@ $mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$Posta = $_POST["email"];
+	$Pasahitza = $_POST["pass"];
 	if (strpos($Posta,'ikasle') !== false) {
 		$_SESSION['rol'] = "Ikas";
 	}else{
 		$_SESSION['rol'] = "Irakas";
-	}
-				$Posta = $_POST["email"];
-				$Pasahitza = $_POST["pass"];
+	}				
 }
+echo $_SESSION['rol'];
 $ordua=date('H:i:s');
  if (isset($_POST['submit'])) {
 	 

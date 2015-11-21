@@ -19,6 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				
 }
+echo $Answ;
+echo $Zail;
+echo $Galdera;
 
 $Posta=$_SESSION['email']; 
 $Ekintza='GalderaTxertatu';
@@ -27,7 +30,6 @@ $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
 if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
-	
 		$txertatu="Update Galdera set galdera='$Galdera', erantzuna='$Answ', zailtasuna='$Zail'"; 
 		if (!$mysqli -> query($txertatu)){
 			die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
@@ -43,6 +45,7 @@ if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
 				
 				$xml->asXML('galderak.xml');*/
 				echo 'Galdera zuzen sartu da';	
+				header('Location: reviewingQuizzes.php');
 			}
 }else{
 	echo'Ez da hutsunerik onartuko.';

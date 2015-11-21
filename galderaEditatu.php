@@ -1,22 +1,21 @@
-
 <html>
 <head><title>GALDERAK EDITATU</title>
 <script type="text/javascript" language = "javascript" >
-	XMLHttpRequestObject = new XMLHttpRequest();
+	/*XMLHttpRequestObject = new XMLHttpRequest();
 	
-	function galderaGorde2(){
+	function gorde(){
 	var galdera=document.getElementById("galdera").value;
 	var answ=document.getElementById("answ").value;
 	var zail=document.getElementById("zail").value;
 	var param= "galdera="+galdera+"&answ="+answ+"&zail="+zail;
 	
-	XMLHttpRequestObject2.open("POST","galderaGorde.php", true);
-	XMLHttpRequestObject2.onreadystatechange = function(){
-	if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
-		document.getElementById('hint').innerHTML=XMLHttpRequestObject2.responseText;
+	XMLHttpRequestObject.open("POST","galderaGorde.php", true);
+	XMLHttpRequestObject.onreadystatechange = function(){
+	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
+		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
 	}}
-	XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	XMLHttpRequestObject2.send(param);
+	XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	XMLHttpRequestObject.send(param);*/
 	}
 </script>
 </head>
@@ -49,11 +48,10 @@ $ip=$_SERVER['REMOTE_ADDR'];
 	$row = mysqli_fetch_array($galdera);
 	$num_rows=mysqli_num_rows($galdera);
 	
-	
 ?>
-<form action="galderaGorde.php" onsubmit="return false;">
+<form onsubmit="return true;" action="galderaGorde.php" method="POST">
   GALDERA*:
-  <input type='text' title='galdera' name='galdera' id='galdera' value='<?php echo $row['galdera'];?>' /> 
+  <input type='text' title='galdera' name='galdera' id='galdera' value='<?php echo $row['galdera'];?> ' /> 
   <br/>
   ERANTZUNA*(hitz batekoa):
   <input type='text' name='answ' id='answ' value="<?php echo $row['erantzuna'];?>" />
@@ -61,7 +59,11 @@ $ip=$_SERVER['REMOTE_ADDR'];
   ZAILTASUNA(1-5 bitartean):
   <input type='number' name='zail' id='zail' value="<?php echo $row['zailtasuna'];?>" />
   <br/>
-<input type="button" name="galderaTxertatu" value="Galdera Gorde" onclick='galderaGorde2()'/>
+ <input type="submit" value="Gorde" /> 
+
+<div id="hint" style="background-color:#99FF66;">
+	<p>Formularioa hemen agertuko da...</p>
+  </div>
   
 </form>  
 </body>
