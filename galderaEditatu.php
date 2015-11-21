@@ -39,15 +39,15 @@ $konId=$_SESSION['konId'];
 <div align="center">
 <form id="editatu" onSubmit="gorde()" action="galderaGorde2.php" method="POST">
   GALDERA*:
-  <input type='text' title='galdera' name='galdera' id='galdera' value='a' /> 
+  <input type='text' title='galdera' name='galdera' id='galdera' value='<?php echo $row['galdera'];?> ' /> 
   <br/>
   ERANTZUNA*(hitz batekoa):
-  <input type='text' name='answ' id='answ' value="a" />
+  <input type='text' name='answ' id='answ' value=" <?php echo $row['erantzuna'];?>" />
   <br/>
   ZAILTASUNA(1-5 bitartean):
-  <input type='number' name='zail' id='zail' value="a" />
+  <input type='number' name='zail' id='zail' value="<?php echo $row['zailtasuna'];?>" />
   <br/>
-  <input type='hidden' name='answ' id='id' value="12" />
+  <input type='hidden' name='answ' id='id' value="<?php echo $row['id'];?>" />
  <input type="submit" value="Gorde" /> 
 </form>
  </div>
