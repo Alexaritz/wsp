@@ -41,10 +41,10 @@ $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 if (!isset($_SESSION['email'])) {
 	$Posta='null';
-	$konId='null';
+	//$konId='null';
 }else{
 	$Posta=$_SESSION['email'];
-	$konId=$_SESSION['konId'];
+	//$konId=$_SESSION['konId'];
 }
 $erabiltzaileak = $mysqli->query("SELECT * FROM Galdera");
 $num_rows=mysqli_num_rows($erabiltzaileak);
@@ -79,7 +79,9 @@ Sartu editatu nahi nuzun galderaren id zenbakia:
    <div id="hint" style="background-color:#99FF66;">
 	<p>Formularioa hemen agertuko da...</p>
   </div>
-  
+  <div align="center">
+<a href="irakasle.html">Atzera</a>
+</div>
 </form>
 </body>
 </html> 

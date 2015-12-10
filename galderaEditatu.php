@@ -22,7 +22,7 @@ $Posta=$_SESSION['email'];
 $konId=$_SESSION['konId'];
 
 	$galdera = mysqli_query($mysqli, "SELECT * FROM galdera where id=('$Id')" );
-	$row = mysqli_fetch_array($galdera);
+	$row = mysqli_fetch_assoc($galdera);
 	$num_rows=mysqli_num_rows($galdera);
 	
 ?>

@@ -15,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (isset($_POST['pass'])&&isset($_POST['pass2'])){
 	if ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass, 'y'=>$Pass2))=='BALIOGABEA'){
-		echo '<h1>Zuzena da? Ez.</h1>';
+		echo 'Ez.';
 	}elseif ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass, 'y'=>$Pass2))=='BALIOZKOA'){	
-		echo '<h1>Zuzena da? Bai.</h1>';
+		echo 'Bai.';
 	}elseif ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass, 'y'=>$Pass2))=='EZBERDINAK'){
 		echo '<h1>Pasahitzak ezberdinak dira.</h1>';
 	}else{

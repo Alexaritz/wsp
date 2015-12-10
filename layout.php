@@ -1,18 +1,22 @@
-﻿	<?php
+﻿  	<?php
 		session_start();
-		$Posta = $_POST["email"];
-		echo '$Posta';
-		if(isset($_SESSION["email"])){
-			if ($_SESSION['rol'] == "Ikas"){
-				ikaslearenEstekak(); 	
-			}else if ($_SESSION['rol'] == "Irakas"){
-				irakaslearenEstekak();	
-			}
+		$Posta = $_SESSION['email'];
+		echo "$Posta";
+		echo "blas";
+		if(isset($Posta)){
+			if ($_SESSION['rol'] == "Ikas"){ ?>
+				<script language="javascript">
+				ikaslearenEstekak();
+				</script>
+		  <?}else if ($_SESSION['rol'] == "Irakas"){ ?>
+				<script language="javascript">
+				irakaslearenEstekak();
+				</script>			
+		  <?}
 		}
 	?>
 <html>
   <head>
-
 	<script>
 		function ikaslearenEstekak(){
 			document.getElementById("signup").style.display="none";
@@ -49,6 +53,7 @@
 	   
   </head>
   <body>
+ 
 		<div align="center">
 			<h1> QUIZZES: Praktika Orokorra </h1>
 			</br>	
@@ -92,7 +97,7 @@
 	<footer class='main' id='f1'>
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
 		<a href='https://github.com'>Link GITHUB</a>
-	</footer>-->
-</div>
+	</footer>
+</div>-->
 </body>
 </html>

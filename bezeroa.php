@@ -14,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (isset($_POST['email'])){
 	if ($soapclient->call('comprobar',array('x'=>$Posta))=='NO'){
-		echo '<h1>Matrikulatuta dago? Ez.</h1>';
+		echo 'Ez.';
 	}elseif ($soapclient->call('comprobar',array('x'=>$Posta))=='SI'){
-		echo '<h1>Matrikulatuta dago? Bai.</h1>';
+		echo 'Bai.';
 	}else{
 		echo 'Errorea.';
 	}

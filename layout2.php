@@ -1,20 +1,7 @@
-﻿	<?php
-		session_start();
-		$Posta = $_POST["email"];
-		echo '$Posta';
-		if(isset($_SESSION["email"])){
-			if ($_SESSION['rol'] == "Ikas"){
-				ikaslearenEstekak(); 	
-			}else if ($_SESSION['rol'] == "Irakas"){
-				irakaslearenEstekak();	
-			}
-		}
-	?>
-<html>
-  <head>
-
-	<script>
-		function ikaslearenEstekak(){
+	<html>
+  <head><title>Quizzes</title>
+	<script> 
+	function ikaslearenEstekak(){
 			document.getElementById("signup").style.display="none";
 			document.getElementById("signin").style.display="none";
 			document.getElementById("try").style.display="none";
@@ -25,6 +12,7 @@
 		}
 	
 		function irakaslearenEstekak(){
+			alert("a");
 			document.getElementById("signup").style.display="none";
 			document.getElementById("signin").style.display="none";
 			document.getElementById("try").style.display="none";
@@ -33,9 +21,25 @@
 			document.getElementById("review").style.display="inline";
 			document.getElementById("listusers").style.display="inline";
 		}
+	<?php
+		session_start();
+		echo "<p>blas<p>";
+		//if(isset($_SESSION['email'])){
+			$Posta = $_SESSION['email'];
+			echo "$Posta";
+			
+					
+			if ($_SESSION['rol'] == "Ikas"){ 
+			echo '<script type="text/javascript">'   , 'ikaslearenEstekak();'   , '</script>';
+					//echo ikaslearenEstekak();
+			}else if ($_SESSION['rol'] == "Irakas"){
+				echo '<script type="text/javascript">'   , 'irakaslearenEstekak();'   , '</script>';
+					//irakaslearenEstekak();		
+			}
+		//}?> 
+		
 	</script>
-    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>Quizzes</title>
+	
     <link rel='stylesheet' type='text/css' href='stylesPWS/style.css' />
 	<link rel='stylesheet' 
 		   type='text/css' 
@@ -49,6 +53,7 @@
 	   
   </head>
   <body>
+ 
 		<div align="center">
 			<h1> QUIZZES: Praktika Orokorra </h1>
 			</br>	
@@ -64,8 +69,7 @@
 			</br>
 			<a id="review" href="reviewingQuizzes.php" style="display: none;" >Review quizzes</a>
 			</br>
-			<a id="listusers" href="IkusiErabiltzaileak.php" style="display: none;" >List users</a>
-			
+			<a id="listusers" href="IkusiErabiltzaileak.php" style="display: none;" >List users</a>	
 		</div>	
   
 	
@@ -92,7 +96,7 @@
 	<footer class='main' id='f1'>
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
 		<a href='https://github.com'>Link GITHUB</a>
-	</footer>-->
-</div>
+	</footer>
+</div>-->
 </body>
 </html>
