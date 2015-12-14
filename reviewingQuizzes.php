@@ -80,7 +80,7 @@ Sartu editatu nahi nuzun galderaren id zenbakia:
 	<p>Formularioa hemen agertuko da...</p>
   </div>
   <div align="center">
-<a href="irakasle.html">Atzera</a>
+<a href="layout.php">Atzera</a>
 </div>
 </form>
 </body>

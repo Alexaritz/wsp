@@ -30,7 +30,7 @@ echo '<tr><td>'.$row['Posta'].'</td> <td>'. $row['IzenaAb']. '</td> <td>'. $row[
 echo '</table>';
 ?>
 <div align="center">
-<a href="irakasle.html">Atzera</a>
+<a href="layout.php">Atzera</a>
 </div>
 </body> 
 </html> 

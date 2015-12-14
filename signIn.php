@@ -31,6 +31,7 @@ if ($mysqli->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$Posta = $_POST["email"];
 	$Pasahitza = $_POST["pass"];
+	$Pasahitza=crypt($Pasahitza,'rd');
 	if (strpos($Posta,'ikasle') !== false) {
 		$_SESSION['rol'] = "Ikas";
 	}else{
@@ -69,7 +70,6 @@ if (isset($_POST['submit'])) {
 			echo "<p>Datuak ez dira zuzenak</p>";
 			echo $_SESSION['saiakerak'];
 			$_SESSION['saiakerak']=$_SESSION['saiakerak']+1;
-			echo"<p><a href='layout.html'>Hasiera orria</a></p>   ";
 		}	
 	}
 }else if(isset($_POST['pasber'])){
@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 </form>
-<a href='layout.html'>Hasiera</a>
+<a href='layout.php'>Hasiera</a>
 <div align="center">
 </body> 
 </html> 

@@ -6,7 +6,7 @@ if(!isset($_SESSION["email"])){
 ?>
 <html>
 <head><title>GALDEREN MANEIUA</title>
-<script type="text/javascript" language = "javascript" >
+<!--<script type="text/javascript" language = "javascript" >
 	XMLHttpRequestObject = new XMLHttpRequest();
 	XMLHttpRequestObject2 = new XMLHttpRequest();
 	XMLHttpRequestObject3 = new XMLHttpRequest();
@@ -46,6 +46,27 @@ if(!isset($_SESSION["email"])){
 	}
 	setInterval(galderaKop,5000);
 
+</script>-->
+<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+//Galderak ikusteko
+$(document).ready(function(){
+    $("#galderaIkusi").click(function(){
+        $("#hint").load("gureGalderak.php");
+		 document.getElementById('galderaIkusi').style.visibility="visible";
+		
+    });});
+
+//Galderak txertatzeko	
+$("#galderaTxertatu").click(function(){
+			var gald = document.getElementById('galdera').value; 
+			var eran = document.getElementById('answ').value; 
+			var zail = document.getElementById('zail').value; 
+			var param = "galdera="+gald+"&answ="+eran+"&zail="+zail;
+        $("#hint").load("sartuGaldera.php",{galdera:g, erantzuna:e, zailtasuna:z} );
+    });
+
+
 </script>
 </head>
 <body >
@@ -60,8 +81,8 @@ if(!isset($_SESSION["email"])){
   ZAILTASUNA(1-5 bitartean):
   <input type='number' name='zail' id='zail' value='' />
   <br/> 
-  <input type="button" name="galderaTxertatu" value="Galdera Txertatu" onclick='galderaTxertatu2()'/>
-  <input type="button" name="galderaIkusi" value="Galderak Ikusi" onclick='galderakIkusi()'/>
+  <input type="button" name="galderaTxertatu" value="Galdera Txertatu" /><!--onclick='galderaTxertatu2()'-->
+  <input type="button" name="galderaIkusi" value="Galderak Ikusi" /><!--onclick='galderakIkusi()'-->
  </form>
   <div id="hint" style="background-color:#99FF66;">
 	<p>Nire kideak hemen agertuko agertuko dira...</p>
@@ -91,13 +112,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $Posta=$_SESSION['email']; 
 $Ekintza='GalderaTxertatu';
-$konId=$_SESSION['konId'];
+//$konId=$_SESSION['konId'];
 $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
 ?>
 
-<a href='layout.html'>Hasiera</a>
+<a href='layout.php'>Hasiera</a>
 <br/>
 <div align="center">
 </body> 

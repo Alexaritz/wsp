@@ -21,6 +21,7 @@ if (isset($_POST['pass'])&&isset($_POST['pass2'])){
 	}elseif ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass, 'y'=>$Pass2))=='EZBERDINAK'){
 		echo '<h1>Pasahitzak ezberdinak dira.</h1>';
 	}else{
+		echo "$soapclient->call('egiaztatuPasahitza',array('x'=>$Pass, 'y'=>$Pass2))";
 		echo 'Errorea.';
 	}
 }

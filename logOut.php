@@ -10,6 +10,6 @@ session_destroy();
 	Mila esker zure atzipenagatik
 	<br>
 	<br>
-	<a href="layout.html">Kautotze formularioa</a>
+	<a href="layout.php">Kautotze formularioa</a>
 </body>
 </html> 

@@ -2,16 +2,6 @@
 <html>
 <head><title>FORMULARIOA</title>
 <script type="text/javascript" language = "javascript" >
-	
-
-	
-	/*function hutsaEz(){
-	var email=document.getElementById("email").value;
-			if (email=="" || email==null){
-				return false;
-			}
-		return true;
-	}*/
 	XMLHttpRequestObject = new XMLHttpRequest();
 	XMLHttpRequestObject2 = new XMLHttpRequest();
 	XMLHttpRequestObject3 = new XMLHttpRequest();
@@ -29,8 +19,12 @@
 			var email=document.getElementById("email").value;
 			var param= "email="+email;
 			XMLHttpRequestObject.onreadystatechange = function(){
-			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-				document.getElementById('hint').innerHTML="Matrikulatuta dago?"+XMLHttpRequestObject.responseText;
+			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){
+				if(XMLHttpRequestObject.responseText=="Ez.")
+					alert("Email hori ez dago matrikulatutakoen artean.");
+				else if(XMLHttpRequestObject.responseText=="Errorea.")
+					alert("Errorea gertatu da email-a konprobatzeakoan.");
+					document.getElementById('hint').innerHTML="Matrikulatuta dago?"+XMLHttpRequestObject.responseText;
 			}}
 			XMLHttpRequestObject.open("POST","bezeroa.php", true);
 			XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -40,10 +34,11 @@
 	function bidali2(){
 			var pass=document.getElementById("pass").value;
 			var pass2=document.getElementById("pass2").value;
-			var param= "pass="+pass+"&pass2="+pass2;
-			
+			var param= "pass="+pass+"&pass2="+pass2;		
 			XMLHttpRequestObject2.onreadystatechange = function(){
 			if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
+				if(XMLHttpRequestObject.responseText=="Ez.")
+				alert("Pasahitza ez da zuzena.");
 				document.getElementById('hint2').innerHTML="Pasahitza zuzena da?"+XMLHttpRequestObject2.responseText;
 			}}
 			XMLHttpRequestObject2.open("POST","pasahitzak.php", true);
@@ -100,14 +95,12 @@
 	}
 	
 	function balidatu(){
-		alert("a");
 	 	if (hutsaEz()){
 			if (balidatuPass(document.getElementById("pass").value)){
 				if (balidatuTel(document.getElementById("tel").value)){
 					if (balidatuPosta(document.getElementById("email").value)){
 						if(izAbAb(document.getElementById("izena").value)){
 							if(document.getElementById("pass").value==document.getElementById("pass2").value){
-							alert("Formularioa ondo bidali da :)");
 							return true;
 							}else{alert("Pasahitzek ez dute koinziditzen.");}
 						}else{alert("Izena eta bi abizenak sartu behar dituzu, eta bakoitzaren lehen hizkia letra larriz.");}
@@ -255,6 +248,5 @@
   </div>
 </form>
 <a href='layout.html'>Hasiera</a>
-<div align="center">
 </body>
 </html>

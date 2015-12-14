@@ -32,8 +32,7 @@ $erantzuna=$_POST ['erantzuna'];
 $besteesp=$_POST ['besteesp'];
 $esp=$_POST ['esp'];
 $interesak=$_POST['interesak'];
-$Pasahitza = crypt($pass,'rd');
-
+$Pasahitza = crypt($pass, 'rd');
 
 if (filter_var($email,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$emailfields)))){
 	if (filter_var($pass,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$passfields)))){
@@ -45,18 +44,23 @@ if (filter_var($email,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$e
 						if (!$mysqli -> query($txertatu)){
 							die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 						}
-						echo "<p>Datuak zuzen gorde dira.</p> <p><a href='IkusiErabiltzaileak.php'>ERREGISTROAK IKUSI</a></p>   ";
+						if(strpos($email,'ikasle'))
+							header('Location: handlingQuizzes.php');
+						else
+							header('Location: irakasle.html');
 					}
 					else{
 						echo 'Beste espezialitatea sartu behar duzu';
 					}
 				}else{
-					$txertatu="INSERT INTO Erabiltzaile(IzenaAb, Posta,Pasahitza, Tel, Espezialitatea, Interesak, Galdera, Erantzuna) VALUES ('$_POST[izena]','$_POST[email]','$_POST[pass]','$_POST[tel]','$_POST[esp]','$_POST[interesak]', '$galdera', '$erantzuna')";  
+					$txertatu="INSERT INTO Erabiltzaile(IzenaAb, Posta,Pasahitza, Tel, Espezialitatea, Interesak, Galdera, Erantzuna) VALUES ('$_POST[izena]','$_POST[email]','$Pasahitza','$_POST[tel]','$_POST[esp]','$_POST[interesak]', '$galdera', '$erantzuna')";  
 					if (!$mysqli -> query($txertatu)){
 						die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 					}
-					mysqli_close($mysqli);
-					echo "<p>Datuak zuzen gorde dira.</p> <p><a href='IkusiErabiltzaileak.php'>ERREGISTROAK IKUSI</a></p>   ";
+					if(strpos($email,'ikasle'))
+							header('Location: handlingQuizzes.php');
+						else
+							header('Location: irakasle.html');
 				}	
 			}else{mysqli_close($mysqli);
 				echo 'Izena eta bi abizenak sartu behar dituzu, eta bakoitzaren lehen hizkia letra larriz';}			
