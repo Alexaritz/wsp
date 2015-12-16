@@ -1,3 +1,8 @@
+<?php
+session_start();
+echo $_GET["anon"];echo ' moduan sartu zara.';
+echo '<a href="jolastu.php">Atzera</a>';
+?>
 <html>
 <head>
 <script language="JavaScript">
@@ -11,9 +16,9 @@
 			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
 				document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
 			}}
-			XMLHttpRequestObject2.open("POST","konprobatu.php", true);
-			XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			XMLHttpRequestObject2.send(param);
+			XMLHttpRequestObject.open("POST","konprobatu.php", true);
+			XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			XMLHttpRequestObject.send(param);
 		}
 
 </script>
@@ -25,13 +30,13 @@
   <br/>
   GALDERAREN ERANTZUNA:
   <input type='text' title='izena' name='erantzuna' id='erantzuna' value='' /> 
-  <input type='button' title='konprobatu' name='konprobatu' id='konprobatu' value='Konprobatu' onclick="konprobatu()" /> 
+  <input type='button' title='konprobatu' name='konprobatu' id='konprobatu' value='Konprobatu'  /> 
   <br/>
   </form>
 <div align="center">
 <h1>GALDERAK</h1>
 <?php
-session_start();
+
 
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
@@ -40,7 +45,7 @@ $sdb = "u266570359_quiz";
 $mysqli =new mysqli ("localhost","root","", $sdb);
 //$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 
-$_SESSION['anon']=$_GET["anon"];
+	
 $erabiltzaileak = mysqli_query($mysqli, "SELECT * FROM Galdera" );
 echo '<table border=1>
 <tr>

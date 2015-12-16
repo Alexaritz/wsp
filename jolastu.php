@@ -23,10 +23,12 @@ $Posta=$_SESSION['email'];
 ?>
 <html>
 <head><title>GALDERAK EDITATU</title>
+<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script language="JavaScript">
 	XMLHttpRequestObject = new XMLHttpRequest();
 
 		function galderakIkusi(){
+			document.getElementById("anonimo").style.display="none";		
 			var anoname=document.getElementById("izena").value;
 			XMLHttpRequestObject.open("GET","quizzes.php?anon="+anoname, true);
 			XMLHttpRequestObject.onreadystatechange = function(){
@@ -35,6 +37,25 @@ $Posta=$_SESSION['email'];
 			}}
 			XMLHttpRequestObject.send();
 		}
+			/*XMLHttpRequestObject2 = new XMLHttpRequest();
+
+		/*function konprobatu(){
+			var id=document.getElementById("id").value;
+			var erantzuna=document.getElementById("erantzuna").value;
+			var param= "id="+id+"&erantzuna="+erantzuna;		
+			XMLHttpRequestObject2.onreadystatechange = function(){
+			if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
+				document.getElementById('hint').innerHTML=XMLHttpRequestObject2.responseText;
+			}}
+			XMLHttpRequestObject2.open("POST","konprobatu.php", true);
+			XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			XMLHttpRequestObject2.send(param);
+		}*/
+		$(document).on("click", '#konprobatu', function(event) { 
+			var id = document.getElementById('id').value; 
+			var erantzuna = document.getElementById('erantzuna').value;
+			$("#hint").load("konprobatu.php",{id:id, erantzuna:erantzuna} );
+		});
 </script>
 </head>
 <body>
