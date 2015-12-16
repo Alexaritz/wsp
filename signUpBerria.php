@@ -19,12 +19,13 @@
 			var email=document.getElementById("email").value;
 			var param= "email="+email;
 			XMLHttpRequestObject.onreadystatechange = function(){
-			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){
-				if(XMLHttpRequestObject.responseText=="Ez.")
+			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject2.status==200 )){
+				/*if(XMLHttpRequestObject.responseText=="Ez."){
 					alert("Email hori ez dago matrikulatutakoen artean.");
-				else if(XMLHttpRequestObject.responseText=="Errorea.")
+				}else if(XMLHttpRequestObject.responseText=="Errorea."){
 					alert("Errorea gertatu da email-a konprobatzeakoan.");
-					document.getElementById('hint').innerHTML="Matrikulatuta dago?"+XMLHttpRequestObject.responseText;
+				}*/
+				document.getElementById('hint').innerHTML="Matrikulatuta al dago?"+XMLHttpRequestObject.responseText;
 			}}
 			XMLHttpRequestObject.open("POST","bezeroa.php", true);
 			XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -247,6 +248,6 @@
 	<p>Erregistratu zara?</p>
   </div>
 </form>
-<a href='layout.html'>Hasiera</a>
+<a href='layout.php'>Hasiera</a>
 </body>
 </html>

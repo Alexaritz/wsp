@@ -1,8 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION["email"])){
-	header("Location: errorea.php");
-}
+$_SESSION['zuzenak'] = 0;
+$_SESSION['okerrak'] = 0;
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
@@ -18,13 +17,8 @@ if ($mysqli->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$Id= $_POST["id"];					
 }
-
 $Posta=$_SESSION['email'];
-$konId=$_SESSION['konId'];
 
-$galdera = mysqli_query($mysqli, "SELECT * FROM galdera where id=('$Id')" );
-$row = mysqli_fetch_assoc($galdera);
-$num_rows=mysqli_num_rows($galdera);
 	
 ?>
 <html>
@@ -33,14 +27,14 @@ $num_rows=mysqli_num_rows($galdera);
 	XMLHttpRequestObject = new XMLHttpRequest();
 
 		function galderakIkusi(){
-			var anon=document.getElementById("");
-	XMLHttpRequestObject.open("GET","quiz.php?anon=", true);
-	XMLHttpRequestObject.onreadystatechange = function(){
-	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-		document.getElementById('tabla').innerHTML=XMLHttpRequestObject.responseText;
-	}}
-	XMLHttpRequestObject.send();
-	}
+			var anoname=document.getElementById("izena").value;
+			XMLHttpRequestObject.open("GET","quizzes.php?anon="+anoname, true);
+			XMLHttpRequestObject.onreadystatechange = function(){
+			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
+				document.getElementById('tabla').innerHTML=XMLHttpRequestObject.responseText;
+			}}
+			XMLHttpRequestObject.send();
+		}
 </script>
 </head>
 <body>

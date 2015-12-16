@@ -8,9 +8,9 @@ $soapclient = new nusoap_client( 'http://sw14.hol.es/ServiciosWeb/comprobarmatri
 
 //Web-Service-n inplementatu dugun funtzioari dei egiten diogu
 //eta itzultzen diguna inprimatzen dugu
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$Posta= $_POST["email"];
-}
+//}
 
 if (isset($_POST['email'])){
 	if ($soapclient->call('comprobar',array('x'=>$Posta))=='NO'){
@@ -21,8 +21,8 @@ if (isset($_POST['email'])){
 		echo 'Errorea.';
 	}
 }
-//echo '<h2>Request</h2><pre>'.htmlspecialchars($soapclient->request, ENT_QUOTES).'</pre>';
-//echo ' <h2> Response </h2><pre> '.htmlspecialchars($soapclient->response, ENT_QUOTES).'< pre>';
+echo '<h2>Request</h2><pre>'.htmlspecialchars($soapclient->request, ENT_QUOTES).'</pre>';
+echo ' <h2> Response </h2><pre> '.htmlspecialchars($soapclient->response, ENT_QUOTES).'< pre>';
 
 //echo '<h2>Debug</h2>';
 //echo '<pre>' . htmlspecialchars($soapclient->debug_str, ENT_QUOTES) . '</pre>';

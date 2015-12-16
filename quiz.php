@@ -24,7 +24,7 @@ if (!isset($_SESSION['email'])) {
 	$Posta=$_SESSION['email'];
 	$konId=$_SESSION['konId'];
 }
-		$_SESSION= $_POST["id"];	
+//$_SESSION= $_POST["id"];	
 $erabiltzaileak = mysqli_query($mysqli, "SELECT * FROM Galdera" );
 echo '<table border=1>
 <tr>
