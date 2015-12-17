@@ -40,7 +40,7 @@ if (isset($Pass)&&isset($Pass2)){
 		}else{
 			echo "Pasahitza zuzen eguneratu da. <br/>";
 			echo "Itzuli hasiera orrira: ";
-			echo "<a href='layout.html'>Hasiera</a>";
+			echo "<a href='layout.php'>Hasiera</a>";
 		}
 	}elseif ($soapclient->call('egiaztatuPasahitza',array('x'=>$Pass, 'y'=>$Pass2))=='EZBERDINAK'){
 		echo '<h1>Pasahitzak ezberdinak dira.</h1>';

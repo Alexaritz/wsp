@@ -22,10 +22,10 @@ $erab = $mysqli->query( "SELECT * FROM Galdera WHERE id=('$Id') and erantzuna=('
 $num_rows=mysqli_num_rows($erab);
 if ($num_rows> 0){
 	$_SESSION['zuzenak'] = $_SESSION['zuzenak']+1;
-	echo "<p>Erantzuna zuzena da. ".$_SESSION['zuzenak'] ."galdera zuzen erantzun dituzu, eta oker berriz". $_SESSION['okerrak'] ."galdera.</p>";
+	echo "<p>Erantzuna zuzena da. ".$_SESSION['zuzenak']." galdera zuzen erantzun dituzu, eta oker berriz ".$_SESSION['okerrak']." galdera.</p>";
 }else{
 	$_SESSION['okerrak'] = $_SESSION['okerrak']+1;
-	echo "<p>Erantzuna okerra da. ".$_SESSION['zuzenak'] ." galdera zuzen erantzun dituzu, eta oker berriz ". $_SESSION['okerrak'] ." galdera.</p>";
+	echo "<p>Erantzuna okerra da. ".$_SESSION['zuzenak'] ." galdera zuzen erantzun dituzu, eta oker berriz ".$_SESSION['okerrak']." galdera.</p>";
 }
 ?>
 

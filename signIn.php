@@ -2,6 +2,7 @@
 <head><title>DATU BASEAN DAUDEN ERABILTZAILEAK</title>
 <body>
 <div align="center">
+<h1>Saioa hasi</h1>
 <form method="post">
   POSTA:
   <input type='text' title='EHUko posta' name='email' id='email' value='' />
@@ -41,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 if (isset($_POST['submit'])) { 
-	echo "Session variables are set.";
+	//echo "Session variables are set.";
 	$erab = $mysqli->query( "SELECT * FROM Erabiltzaile WHERE Posta=('$Posta') and Pasahitza=('$Pasahitza')" );
 	$num_rows=mysqli_num_rows($erab);
 	if ($num_rows> 0){
@@ -58,17 +59,17 @@ if (isset($_POST['submit'])) {
 			echo 'Ez da bilatu';
 		}
 		mysqli_close($mysqli);
-		if ($_SESSION['rol']=="Ikas")
+		/*if ($_SESSION['rol']=="Ikas")
 			header('Location: handlingQuizzes.php');
-		else
-			header('Location: irakasle.html');
+		else*/
+			header('Location: layout.php');
 	}
 	else{
 		if($_SESSION['saiakerak']==3){
 			header('Location: maxtries.php');
 		}else{
-			echo "<p>Datuak ez dira zuzenak</p>";
-			echo $_SESSION['saiakerak'];
+			echo "<p> <br/> Datuak ez dira zuzenak</p>";
+			echo "Saiakera kopurua: " .$_SESSION['saiakerak'];
 			$_SESSION['saiakerak']=$_SESSION['saiakerak']+1;
 		}	
 	}
@@ -81,7 +82,8 @@ if (isset($_POST['submit'])) {
 		echo "<p>Emaila ez da zuzena</p>";
 	}
 }else{
-	echo 'Sartu datuak eta sakatu Bidali';
+	echo '</br> Sartu datuak eta sakatu Bidali';
+	echo '</br> Pasahitza ahaztu baduzu, sartu emaila eta sakatu PASAHITZA AHAZTU DUT.';
 }
 ?>
 </form>

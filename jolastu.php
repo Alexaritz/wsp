@@ -66,7 +66,7 @@ $Posta=$_SESSION['email'];
   <input type="button" name="galderaIkusi" value="Galderak Ikusi" onclick='galderakIkusi()'/>
 </form>
 <div id="tabla" >
- 
+<a href='layout.php'>Hasiera orrira</a> 
  </div>
  </div>
 </body>

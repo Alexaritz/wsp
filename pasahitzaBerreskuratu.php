@@ -42,7 +42,7 @@ $row = $mysqli->query("SELECT * FROM Erabiltzaile WHERE posta='$Posta'");
 $row1 = mysqli_fetch_assoc($row);
 $galdera = $row1["Galdera"];
 $erantzuna = $row1["Erantzuna"];
-echo "$erantzuna";
+//echo "$erantzuna";
 
 $_SESSION['erantzuna'] = $erantzuna;
 ?>

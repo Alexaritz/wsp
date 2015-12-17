@@ -7,9 +7,11 @@ session_destroy();
 	<title> Irten zara!!</title>
 </head>
 <body>
-	Mila esker zure atzipenagatik
+	<div align="center">
+	Saioa itxi duzu.
 	<br>
 	<br>
-	<a href="layout.php">Kautotze formularioa</a>
+	<a href="layout.php">Hasiera orrira</a>
+	</div>
 </body>
 </html> 

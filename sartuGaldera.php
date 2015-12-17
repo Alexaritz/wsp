@@ -14,14 +14,13 @@ $mysqli =new mysqli ("localhost","root","", $sdb);
 if ($mysqli->connect_error) {
     printf("Connection failed: " . $mysqli->connect_error);
 } 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$Answ= $_POST["answ"];
-		$Zail= $_POST["zail"];
-		$Galdera= $_POST["galdera"];		
-				
-				
-}
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$Galdera = $_POST['galdera'];
+	$Answ = $_POST['erantzuna'];
+	$Zail = $_POST['zailtasuna'];
+}
+echo "$Answ";
 $Posta=$_SESSION['email']; 
 $Ekintza='GalderaTxertatu';
 //$konId=$_SESSION['konId'];
@@ -29,7 +28,7 @@ $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
 if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
-	$txertatu="INSERT INTO Galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
+	$txertatu="INSERT INTO galdera (galdera,erantzuna,zailtasuna,posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
 	if (!$mysqli -> query($txertatu)){
 		die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 	}else{

@@ -1,7 +1,7 @@
 <?php
 session_start();
 echo $_GET["anon"];echo ' moduan sartu zara.';
-echo '<a href="jolastu.php">Atzera</a>';
+echo '<a href="jolastu.php">Irten</a>';
 ?>
 <html>
 <head>
@@ -63,7 +63,7 @@ echo '</table>';
 
 ?>
 
-  <div id="hint">a</div>
+  <div id="hint"> </div>
 </div>
 </body> 
 </html> 

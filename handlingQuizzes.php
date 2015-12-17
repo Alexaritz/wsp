@@ -6,47 +6,46 @@ if(!isset($_SESSION["email"])){
 ?>
 <html>
 <head><title>GALDEREN MANEIUA</title>
-<!--<script type="text/javascript" language = "javascript" >
+<script type="text/javascript" language = "javascript" >
 	XMLHttpRequestObject = new XMLHttpRequest();
 	XMLHttpRequestObject2 = new XMLHttpRequest();
 	XMLHttpRequestObject3 = new XMLHttpRequest();
 	
-	
-	
+
 	function galderakIkusi(){
-	XMLHttpRequestObject.open("POST","gureGalderak.php", true);
-	XMLHttpRequestObject.onreadystatechange = function(){
-	if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
-		document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
-	}}
-	XMLHttpRequestObject.send();
+		XMLHttpRequestObject.open("POST","gureGalderak.php", true);
+		XMLHttpRequestObject.onreadystatechange = function(){
+		if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200 )){ 
+			document.getElementById('hint').innerHTML=XMLHttpRequestObject.responseText;
+		}}
+		XMLHttpRequestObject.send();
 	}
 	function galderaTxertatu2(){
-	var galdera=document.getElementById("galdera").value;
-	var answ=document.getElementById("answ").value;
-	var zail=document.getElementById("zail").value;
-	var param= "galdera="+galdera+"&answ="+answ+"&zail="+zail;
-	
-	XMLHttpRequestObject2.open("POST","sartuGaldera.php", true);
-	XMLHttpRequestObject2.onreadystatechange = function(){
-	if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
-		document.getElementById('hint').innerHTML=XMLHttpRequestObject2.responseText;
-	}}
-	XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	XMLHttpRequestObject2.send(param);
+		var galdera=document.getElementById("galdera").value;
+		var answ=document.getElementById("answ").value;
+		var zail=document.getElementById("zail").value;
+		var param= "galdera="+galdera+"&answ="+answ+"&zail="+zail;
+		
+		XMLHttpRequestObject2.open("POST","sartuGaldera.php", true);
+		XMLHttpRequestObject2.onreadystatechange = function(){
+		if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
+			document.getElementById('hint').innerHTML=XMLHttpRequestObject2.responseText;
+		}}
+		XMLHttpRequestObject2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		XMLHttpRequestObject2.send(param);
 	}
 	
 	function galderaKop(){
-	XMLHttpRequestObject3.open("POST","galderaKop.php", true);
-	XMLHttpRequestObject3.onreadystatechange = function(){
-	if ((XMLHttpRequestObject3.readyState==4)&&(XMLHttpRequestObject3.status==200 )){ 
-		document.getElementById('kop').innerHTML=XMLHttpRequestObject3.responseText;
-	}}
-	XMLHttpRequestObject3.send();
+		XMLHttpRequestObject3.open("POST","galderaKop.php", true);
+		XMLHttpRequestObject3.onreadystatechange = function(){
+		if ((XMLHttpRequestObject3.readyState==4)&&(XMLHttpRequestObject3.status==200 )){ 
+			document.getElementById('kop').innerHTML=XMLHttpRequestObject3.responseText;
+		}}
+		XMLHttpRequestObject3.send();
 	}
 	setInterval(galderaKop,5000);
 
-</script>-->
+</script>
 <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" language="javascript">
 //Galderak ikusteko
@@ -55,17 +54,19 @@ $(document).ready(function(){
         $("#hint").load("gureGalderak.php");
 		 document.getElementById('galderaIkusi').style.visibility="visible";
 		
-    });});
-
-//Galderak txertatzeko	
-$("#galderaTxertatu").click(function(){
-			var gald = document.getElementById('galdera').value; 
-			var eran = document.getElementById('answ').value; 
-			var zail = document.getElementById('zail').value; 
-			var param = "galdera="+gald+"&answ="+eran+"&zail="+zail;
-        $("#hint").load("sartuGaldera.php",{galdera:g, erantzuna:e, zailtasuna:z} );
     });
+});
 
+//Galderak txertatzeko
+$(document).ready(function(){	
+	$("#galderaTxertatu").click(function(){
+		var gald = document.getElementById('galdera').value; 
+		var eran = document.getElementById('answ').value;
+		var zail = document.getElementById('zail').value; 
+		//var param = "galdera="+gald+"&answ="+eran+"&zail="+zail;
+		$("#hint").load("sartuGaldera.php",{galdera:gald, erantzuna:eran, zailtasuna:zail} );
+    });
+});
 
 </script>
 </head>
@@ -73,22 +74,22 @@ $("#galderaTxertatu").click(function(){
 <div align="center">
 <form onsubmit="return false;">
 	GALDERA*:
-  <input type='text' title='galdera' name='galdera' id='galdera' value='' /> 
-  <br/>
-  ERANTZUNA*(hitz batekoa):
-  <input type='text' name='answ' id='answ' value='' />
-  <br/>
-  ZAILTASUNA(1-5 bitartean):
-  <input type='number' name='zail' id='zail' value='' />
-  <br/> 
-  <input type="button" name="galderaTxertatu" value="Galdera Txertatu" /><!--onclick='galderaTxertatu2()'-->
-  <input type="button" name="galderaIkusi" value="Galderak Ikusi" /><!--onclick='galderakIkusi()'-->
- </form>
+	<input type='text' title='galdera' name='galdera' id='galdera' value='' /> 
+	<br/>
+	ERANTZUNA*(hitz batekoa):
+	<input type='text'  title='answ' name='answ' id='answ' value='' />
+	<br/>
+	ZAILTASUNA(1-5 bitartean):
+	<input type='number' name='zail' id='zail' value='' />
+	<br/> 
+	<input type="button" name="galderaTxertatu" id="galderaTxertatu" value="Galdera Txertatu" /> <!--onclick='galderaTxertatu2()'-->
+	<input type="button" name="galderaIkusi" id="galderaIkusi" value="Galderak Ikusi" /> <!--onclick='galderakIkusi()'-->
+</form>	
   <div id="hint" style="background-color:#99FF66;">
-	<p>Nire kideak hemen agertuko agertuko dira...</p>
+	<p>Zure galderak hemen agertuko dira...</p>
   </div>
-   <div id="kop" style="background-color:#99FF66;">
-	<p>Galderak hemen agertuko dira...</p>
+  <div id="kop" style="background-color:#99FF66;">
+	<p>Galdera kopurua hemen agertuko da...</p>
   </div>
 <?php
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
@@ -112,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $Posta=$_SESSION['email']; 
 $Ekintza='GalderaTxertatu';
-//$konId=$_SESSION['konId'];
+//$konId = $_SESSION['konId'];
 $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
@@ -120,6 +121,6 @@ $ip=$_SERVER['REMOTE_ADDR'];
 
 <a href='layout.php'>Hasiera</a>
 <br/>
-<div align="center">
+</div>
 </body> 
 </html> 

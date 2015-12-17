@@ -14,6 +14,7 @@ $link = mysql_connect ("localhost","root","") or die (mysql_error());
 mysql_select_db("u266570359_quiz", $link) or die(mysql_error());
 
 $erabiltzaileak = mysql_query( "SELECT * FROM Erabiltzaile" );
+echo "<h1> Erabiltzaileen zerrenda </h1>";
 echo '<table border=1>
 <tr>
 <th> Posta </th>
@@ -30,7 +31,7 @@ echo '<tr><td>'.$row['Posta'].'</td> <td>'. $row['IzenaAb']. '</td> <td>'. $row[
 echo '</table>';
 ?>
 <div align="center">
-<a href="layout.php">Atzera</a>
+<a href="irakasle.html">Atzera</a>
 </div>
 </body> 
 </html> 
