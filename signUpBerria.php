@@ -38,7 +38,7 @@
 			var param= "pass="+pass+"&pass2="+pass2;		
 			XMLHttpRequestObject2.onreadystatechange = function(){
 			if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
-				if(XMLHttpRequestObject.responseText=="Ez.")
+				if(XMLHttpRequestObject2.responseText=="Ez.")
 				alert("Pasahitza ez da zuzena.");
 				document.getElementById('hint2').innerHTML="Pasahitza zuzena da?"+XMLHttpRequestObject2.responseText;
 			}}
@@ -166,8 +166,7 @@
 					galdera="Lehen maskotaren izena?";
 				}else{
 					galdera="Aitona/Amonaren jaioterria?";
-				}
-				
+				}			
 				var param= "izena="+izena+"&email="+email+"&pass="+pass+"&tel="+tel+"&galdera="+galdera+"&erantzuna="+erantzuna+"&esp="+esp+"&besteesp="+besteesp+"&interesak="+interesak;
 				
 				XMLHttpRequestObject3.open("POST","erregistratu.php", true);
@@ -178,12 +177,14 @@
 				XMLHttpRequestObject3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				XMLHttpRequestObject3.send(param); 
 	}
+	var set=setInterval(dale,1000);
 	function dale(){
-	if (XMLHttpRequestObject.responseText=='Bai.' && XMLHttpRequestObject2.responseText=='Bai.' ){
+	if (XMLHttpRequestObject.responseText=='Bai.' && XMLHttpRequestObject2.responseText=='Bai.'){
+			clearInterval(set);
 			bukatu();
 	}
 	}
-	setInterval(dale,1000);
+	
 </script>
 </head>
 <body>

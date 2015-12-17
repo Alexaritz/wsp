@@ -1,4 +1,4 @@
 <?php
-echo 'ERROREA.'
-echo 'Ezin da orria atzitu.'
+echo 'ERROREA.';
+echo 'Ezin da orria atzitu.';
 ?>

@@ -4,7 +4,8 @@
 </head>   
 
 <body>   
-<?php   
+<?php  
+session_start(); 
 $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root  u266570359_alex
 $password = "7dc3PZD4K8";//7dc3PZD4K8
@@ -44,9 +45,10 @@ if (filter_var($email,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$e
 						if (!$mysqli -> query($txertatu)){
 							die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 						}
-						if(strpos($email,'ikasle'))
+						$_SESSION['email']=$email;
+						if(strpos($email,'ikasle')){
 							header('Location: handlingQuizzes.php');
-						else
+						}else
 							header('Location: irakasle.html');
 					}
 					else{
@@ -57,9 +59,13 @@ if (filter_var($email,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$e
 					if (!$mysqli -> query($txertatu)){
 						die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 					}
-					if(strpos($email,'ikasle'))
-							header('Location: handlingQuizzes.php');
-						else
+					$_SESSION['email']=$email;
+					if(strpos($email,'ikasle')){
+								header('Location: handlingQuizzes.php');
+								/*$url="handlingQuizzes.php";
+								echo '<script> alert("You will now be redirected.");</script>';
+							 echo '<script> alert("You will now be redirected.");window.location.href = ' . $url . ';</script>';*/
+					}else
 							header('Location: irakasle.html');
 				}	
 			}else{mysqli_close($mysqli);
