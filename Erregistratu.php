@@ -47,9 +47,9 @@ if (filter_var($email,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$e
 						}
 						$_SESSION['email']=$email;
 						if(strpos($email,'ikasle')){
-							header('Location: handlingQuizzes.php');
+							header('Location: link.php');
 						}else
-							header('Location: irakasle.html');
+							header('Location: link.php');
 					}
 					else{
 						echo 'Beste espezialitatea sartu behar duzu';
@@ -61,12 +61,10 @@ if (filter_var($email,FILTER_VALIDATE_REGEXP,array("options"=>array("regexp"=>$e
 					}
 					$_SESSION['email']=$email;
 					if(strpos($email,'ikasle')){
-								header('Location: handlingQuizzes.php');
-								/*$url="handlingQuizzes.php";
-								echo '<script> alert("You will now be redirected.");</script>';
-							 echo '<script> alert("You will now be redirected.");window.location.href = ' . $url . ';</script>';*/
+						echo '<script type="text/javascript">alert("Data alert");</script>';
+								header('Location: link.php');
 					}else
-							header('Location: irakasle.html');
+							header('Location: link.php');
 				}	
 			}else{mysqli_close($mysqli);
 				echo 'Izena eta bi abizenak sartu behar dituzu, eta bakoitzaren lehen hizkia letra larriz';}			

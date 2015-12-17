@@ -48,7 +48,6 @@ if(!isset($_SESSION["email"])){
 
 </script>-->
 <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!--location.reload();-->
 <script type="text/javascript" language="javascript">
 //Galderak ikusteko
 $(document).ready(function(){
