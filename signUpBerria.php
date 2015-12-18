@@ -12,7 +12,14 @@
 		bidali2();
 		}
 	}
-
+	function bid2(){
+		var pass=document.getElementById("pass").value;
+		var pass2=document.getElementById("pass2").value;
+		if(pass!=""&&pass2!=""){
+			bidali();
+			bidali2();
+		}
+	}
 	
 	
 	function bidali(){
@@ -20,11 +27,6 @@
 			var param= "email="+email;
 			XMLHttpRequestObject.onreadystatechange = function(){
 			if ((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject2.status==200 )){
-				/*if(XMLHttpRequestObject.responseText=="Ez."){
-					alert("Email hori ez dago matrikulatutakoen artean.");
-				}else if(XMLHttpRequestObject.responseText=="Errorea."){
-					alert("Errorea gertatu da email-a konprobatzeakoan.");
-				}*/
 				document.getElementById('hint').innerHTML="Matrikulatuta al dago?"+XMLHttpRequestObject.responseText;
 			}}
 			XMLHttpRequestObject.open("POST","bezeroa.php", true);
@@ -38,8 +40,6 @@
 			var param= "pass="+pass+"&pass2="+pass2;		
 			XMLHttpRequestObject2.onreadystatechange = function(){
 			if ((XMLHttpRequestObject2.readyState==4)&&(XMLHttpRequestObject2.status==200 )){ 
-				if(XMLHttpRequestObject2.responseText=="Ez.")
-				alert("Pasahitza ez da zuzena.");
 				document.getElementById('hint2').innerHTML="Pasahitza zuzena da?"+XMLHttpRequestObject2.responseText;
 			}}
 			XMLHttpRequestObject2.open("POST","pasahitzak.php", true);
@@ -47,6 +47,31 @@
 			XMLHttpRequestObject2.send(param);
 	}
 
+	
+	var loadFile = function(event) {
+	var output = document.getElementById('preview');
+	output.src = URL.createObjectURL(event.target.files[0]);
+	output.style.paddingBottom="10px";
+	};
+
+	function tamainaAldatu(irudia,altuera,zabalera){
+		irudia.height=altuera;
+		irudia.width=zabalera;
+	}
+
+	function borratu(){
+		var irudia = document.getElementById("preview");
+		irudia.height="0";
+		irudia.width="0";
+		var lauki = document.getElementById("textu2");
+		lauki.parentNode.removeChild(lauki);
+		var botoia = document.getElementById("espezialitatea");
+		botoia.disabled = false;
+	}
+	
+	
+	
+	
 	function balidatuTel(tel){
 		var ptel = new RegExp("[0-9]{9}") ;
 		if (ptel.test(tel)){
@@ -102,7 +127,9 @@
 					if (balidatuPosta(document.getElementById("email").value)){
 						if(izAbAb(document.getElementById("izena").value)){
 							if(document.getElementById("pass").value==document.getElementById("pass2").value){
-							return true;
+								if (XMLHttpRequestObject.responseText=='Bai.' && XMLHttpRequestObject2.responseText=='Bai.'){
+									return true;
+								}else{alert("Pasahitza edo email-a okerra da.");}
 							}else{alert("Pasahitzek ez dute koinziditzen.");}
 						}else{alert("Izena eta bi abizenak sartu behar dituzu, eta bakoitzaren lehen hizkia letra larriz.");}
 					}else{
@@ -119,11 +146,11 @@
 		}return false;
 	}
 
-	 function irudiaErakutsi(irudia) {
+	/* function irudiaErakutsi(irudia) {
         var files = irudia.files;
         for (var i = 0; i < files.length; i++) {           
             var file = files[i];
-            var imageType = /image.*/;     
+            var imageType = /image.;     
             if (!file.type.match(imageType)) {
                 continue;
             }           
@@ -137,7 +164,7 @@
             })(img);
             reader.readAsDataURL(file);
         }    
-    }
+    }*/
 	
 	function besteEsp(){
 		if (document.getElementById("esp").value=="Besterik"){
@@ -148,42 +175,36 @@
 		}
 	}
 	
-	function bukatu(){
-				var izena=document.getElementById("izena").value;
-				var email=document.getElementById("email").value;
-				var pass=document.getElementById("pass").value;
-				var tel=document.getElementById("tel").value;
-				var erantzuna=document.getElementById("erantzuna").value;
-				var esp=document.getElementById("esp").value;
-				var besteesp=document.getElementById("besteesp").value;
-				var interesak=document.getElementById("interesak").value;
-				var galdera=document.getElementById("galdera").value;
-				//var irudia=document.getElementById("irudia").value;
-				
-				if (document.getElementById("galdera").value=="galdera1"){
-					galdera="Musika talde gustokoena?";
-				}else if(document.getElementById("galdera").value=="galdera2"){
-					galdera="Lehen maskotaren izena?";
-				}else{
-					galdera="Aitona/Amonaren jaioterria?";
-				}			
-				var param= "izena="+izena+"&email="+email+"&pass="+pass+"&tel="+tel+"&galdera="+galdera+"&erantzuna="+erantzuna+"&esp="+esp+"&besteesp="+besteesp+"&interesak="+interesak;
-				
-				XMLHttpRequestObject3.open("POST","erregistratu.php", true);
-				XMLHttpRequestObject3.onreadystatechange = function(){
-				if ((XMLHttpRequestObject3.readyState==4)&&(XMLHttpRequestObject3.status==200 )){ 
-					document.getElementById('reg').innerHTML=XMLHttpRequestObject3.responseText;
-				}}
-				XMLHttpRequestObject3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				XMLHttpRequestObject3.send(param); 
-	}
-	var set=setInterval(dale,1000);
-	function dale(){
-	if (XMLHttpRequestObject.responseText=='Bai.' && XMLHttpRequestObject2.responseText=='Bai.'){
-			clearInterval(set);
-			bukatu();
-	}
-	}
+	/*function bukatu(){
+		var izena=document.getElementById("izena").value;
+		var email=document.getElementById("email").value;
+		var pass=document.getElementById("pass").value;
+		var tel=document.getElementById("tel").value;
+		var erantzuna=document.getElementById("erantzuna").value;
+		var esp=document.getElementById("esp").value;
+		var besteesp=document.getElementById("besteesp").value;
+		var interesak=document.getElementById("interesak").value;
+		var galdera=document.getElementById("galdera").value;
+		var irudia=document.getElementById("image").value;
+		
+		
+		if (document.getElementById("galdera").value=="galdera1"){
+			galdera="Musika talde gustokoena?";
+		}else if(document.getElementById("galdera").value=="galdera2"){
+			galdera="Lehen maskotaren izena?";
+		}else{
+			galdera="Aitona/Amonaren jaioterria?";
+		}			
+		var param= "izena="+izena+"&email="+email+"&pass="+pass+"&tel="+tel+"&galdera="+galdera+"&erantzuna="+erantzuna+"&esp="+esp+"&besteesp="+besteesp+"&interesak="+interesak+"&image="+irudia;
+		
+		XMLHttpRequestObject3.open("POST","erregistratu.php", true);
+		XMLHttpRequestObject3.onreadystatechange = function(){
+		if ((XMLHttpRequestObject3.readyState==4)&&(XMLHttpRequestObject3.status==200 )){ 
+			document.getElementById('reg').innerHTML=XMLHttpRequestObject3.responseText;
+		}}
+		XMLHttpRequestObject3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		XMLHttpRequestObject3.send(param); 
+	}*/
 	
 </script>
 </head>
@@ -191,19 +212,19 @@
 <div align="center">
 <h1>Izen-emate formularioa</h1>
  
-<form id="erregistro" name="erregistro">
+<form id="erregistro" name="erregistro" enctype="multipart/form-data" onsubmit="return balidatu()" action="Erregistratu.php" method="POST">
 
   Izen-abizenak*:
   <input type="text" name="izena" id="izena" value="" />
   <br/>
   Posta elektronikoa*:
-  <input type="text" title="EHUko posta" name="email" id="email" value="" />
+  <input type="text" title="EHUko posta" name="email" id="email" value="" onchange="bid2()"/>
   <br/>
   Pasahitza*:
-  <input type="password" name="pass" id="pass" value="" />
+  <input type="password" name="pass" id="pass" value="" onchange="bid2()" />
   <br/>
   Sar ezazu pasahiza berriz:
-  <input type="password" name="pass2" id="pass2" value="" />
+  <input type="password" name="pass2" id="pass2" value="" onchange="bid2()" />
   <br/>
   Telefono Zenbakiak*:
   <input type="text" name="tel" value="" id="tel" />
@@ -230,25 +251,20 @@
   <br/>
   <textarea rows="5" cols="25" name="interesak" id="interesak" value=""  ></textarea>
   <br/>
-  <input name="uploadedfile" type="file" accept="image/*" onchange="irudiaErakutsi(this)"/>
+<input name="image" id ="image" type="file" accept="image/*" onchange="loadFile(event)" onreset= "borratu()"><br><br>
+	<img id="preview" onLoad="tamainaAldatu(this,150,300)"/><br>
   <br/>
-  <img id="img" src="" alt="image" style="width:15%; margin-top:10px;"/>  
-  <br/>
-  
-   
-  <input type="button" name="Bidali" value="Bidali" onclick="bid()"/>
+   <button type="submit" value="Submit">Submit</button>
   <input type="reset" value="Borratu" />
-  <input type="button" name="Bidali" value="Proba" onclick='bukatu()'/>
   <div id="hint" style="background-color:#99FF66;" >
 	<p>Email-a zuzena den ala ez</p>
   </div>
   <div id="hint2" style="background-color:#99FF66;">
 	<p>Pasahitza zuzena den ala ez</p>
   </div>
-    <div id="reg" style="background-color:#99FF66;">
-	<p>Erregistratu zara?</p>
+	<a href='layout.php'>Hasiera</a>
   </div>
 </form>
-<a href='layout.php'>Hasiera</a>
+
 </body>
 </html>

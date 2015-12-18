@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$Id= $_POST["id"];					
 }
 $Posta=$_SESSION['email'];
-$konId=$_SESSION['konId'];
 
 	$galdera = mysqli_query($mysqli, "SELECT * FROM galdera where id=('$Id')" );
 	$row = mysqli_fetch_assoc($galdera);
@@ -37,18 +36,20 @@ $konId=$_SESSION['konId'];
 </head>
 <body>
 <div align="center">
-<form id="editatu" onSubmit="gorde()" action="galderaGorde2.php" method="POST">
+<form id="editatu2" onSubmit="return false;" >
   GALDERA*:
   <input type='text' title='galdera' name='galdera' id='galdera' value='<?php echo $row['galdera'];?> ' /> 
   <br/>
   ERANTZUNA*(hitz batekoa):
-  <input type='text' name='answ' id='answ' value=" <?php echo $row['erantzuna'];?>" />
+  <input type='text' name='answ' id='answ' value="<?php echo $row['erantzuna'];?>" />
   <br/>
   ZAILTASUNA(1-5 bitartean):
   <input type='number' name='zail' id='zail' value="<?php echo $row['zailtasuna'];?>" />
   <br/>
   <input type='hidden' name='answ' id='id' value="<?php echo $row['id'];?>" />
- <input type="submit" value="Gorde" /> 
+ <!--<input type="submit" value="Gorde" /> -->
+ <input type='button' name='gorde' id='gorde' value='Gorde'  /> 
+ <div id="hint2"> </div>
 </form>
  </div>
 </body>

@@ -20,9 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$Answ= $_POST["answ"];
 		$Zail= $_POST["zail"];
 		$Galdera= $_POST["galdera"];	
-		$Id= $_POST["id"];		
-				
-				
+		$Id= $_POST["id"];						
 }
 echo $Id;
 echo $Answ;
@@ -35,7 +33,7 @@ $konId=$_SESSION['konId'];
 $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
-if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
+if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ==""&&!$Galdera==""){
 		$txertatu="Update Galdera set galdera='$Galdera', erantzuna='$Answ', zailtasuna='$Zail' where id='$Id'"; 
 		if (!$mysqli -> query($txertatu)){
 			die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");

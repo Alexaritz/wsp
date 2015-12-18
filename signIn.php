@@ -35,14 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$Pasahitza=crypt($Pasahitza,'rd');
 	if (strpos($Posta,'ikasle') !== false) {
 		$_SESSION['rol'] = "Ikas";
-	}else{
+	}else if($_POST["email"]!=""){
 		$_SESSION['rol'] = "Irakas";
 	}	
-			$_SESSION['email'] = $Posta;	
+	$_SESSION['email'] = $Posta;	
 }
 
 if (isset($_POST['submit'])) { 
-	//echo "Session variables are set.";
 	$erab = $mysqli->query( "SELECT * FROM Erabiltzaile WHERE Posta=('$Posta') and Pasahitza=('$Pasahitza')" );
 	$num_rows=mysqli_num_rows($erab);
 	if ($num_rows> 0){
@@ -59,9 +58,9 @@ if (isset($_POST['submit'])) {
 			echo 'Ez da bilatu';
 		}
 		mysqli_close($mysqli);
-		/*if ($_SESSION['rol']=="Ikas")
+		if ($_SESSION['rol']=="Ikas")
 			header('Location: handlingQuizzes.php');
-		else*/
+		else
 			header('Location: layout.php');
 	}
 	else{

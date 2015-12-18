@@ -27,7 +27,7 @@ $Ekintza='GalderaTxertatu';
 $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 
-if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ=""&&!$Galdera=""){
+if(!$Zail==""&&$Zail>0&&$Zail<6&&!$Answ==""&&!$Galdera==""){
 	$txertatu="INSERT INTO galdera (galdera,erantzuna,zailtasuna,posta) VALUES ('$Galdera','$Answ','$Zail','$Posta')"; 
 	if (!$mysqli -> query($txertatu)){
 		die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");

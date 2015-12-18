@@ -8,7 +8,7 @@ echo '<a href="jolastu.php">Irten</a>';
 <script language="JavaScript">
 	XMLHttpRequestObject = new XMLHttpRequest();
 
-		function konprobatu(){
+		/*function konprobatu(){
 			var id=document.getElementById("id").value;
 			var erantzuna=document.getElementById("erantzuna").value;
 			var param= "id="+id+"&erantzuna="+erantzuna;		
@@ -19,7 +19,7 @@ echo '<a href="jolastu.php">Irten</a>';
 			XMLHttpRequestObject.open("POST","konprobatu.php", true);
 			XMLHttpRequestObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			XMLHttpRequestObject.send(param);
-		}
+		}*/
 
 </script>
 </head>
