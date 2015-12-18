@@ -42,8 +42,8 @@ $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
-$mysqli =new mysqli ("localhost","root","", $sdb);
-//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+//$mysqli =new mysqli ("localhost","root","", $sdb);
+$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 if ($mysqli->connect_errno){
 	die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 }
@@ -52,10 +52,8 @@ $ordua=date('H:i:s');
 $ip=$_SERVER['REMOTE_ADDR'];
 if (!isset($_SESSION['email'])) {
 	$Posta='null';
-	//$konId='null';
 }else{
 	$Posta=$_SESSION['email'];
-	//$konId=$_SESSION['konId'];
 }
 $erabiltzaileak = $mysqli->query("SELECT * FROM Galdera");
 $num_rows=mysqli_num_rows($erabiltzaileak);

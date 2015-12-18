@@ -5,8 +5,8 @@ $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
-$mysqli =new mysqli ("localhost","root","", $sdb);
-//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+//$mysqli =new mysqli ("localhost","root","", $sdb);
+$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 if ($mysqli->connect_errno){
 	die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
 }
@@ -20,7 +20,7 @@ if (!isset($_SESSION['email'])) {
 	$Posta=$_SESSION['email'];
 	$konId=$_SESSION['konId'];
 }
-$erabiltzaileak = $mysqli->query("SELECT * FROM galdera WHERE posta='$Posta'");
+$erabiltzaileak = $mysqli->query("SELECT * FROM Galdera WHERE posta='$Posta'");
 $num_rows=mysqli_num_rows($erabiltzaileak);
 	if ($num_rows> 0){
 		echo '<table border=1>
@@ -37,8 +37,8 @@ $num_rows=mysqli_num_rows($erabiltzaileak);
 	}else{
 		echo 'Ez daukazu galderarik.';
 	}
-$txertatu2="INSERT INTO ekintzak (konId, posta, ekintza, ordua, ip) VALUES ('$konId','$Posta','$Ekintza','$ordua', '$ip')"; 
+/*$txertatu2="INSERT INTO ekintzak (konId, posta, ekintza, ordua, ip) VALUES ('$konId','$Posta','$Ekintza','$ordua', '$ip')"; 
 if (!$mysqli -> query($txertatu2)){
 	die("<p>Errorea gertatu da: ".$mysqli -> error ."</p>");
-}
+}*/
 ?>

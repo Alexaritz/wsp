@@ -1,7 +1,7 @@
 <?php
 require_once('lib/nusoap.php');
 require_once('lib/class.wsdlcache.php');
-$ns="http://localhost/ikasleak/egiaztatuPasahitza.php?wsdl"; //name of the service
+$ns="http://wsalex.hol.es/proiektuakws/ikasleak/egiaztatuPasahitza.php?wsdl"; //name of the service
 $server = new soap_server;
 $server->configureWSDL('egiaztatuPasahitza',$ns);
 $server->wsdl->schemaTargetNamespace=$ns;

@@ -42,8 +42,8 @@ $servidor = "mysql.hostinger.es";//localhost mysql.hostinger.es
 $usuario = "u266570359_alex";//root u266570359_alex
 $password = "7dc3PZD4K8";// 7dc3PZD4K8
 $sdb = "u266570359_quiz";
-$mysqli =new mysqli ("localhost","root","", $sdb);
-//$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
+//$mysqli =new mysqli ("localhost","root","", $sdb);
+$mysqli =new mysqli ($servidor,$usuario,$password, $sdb);
 
 	
 $erabiltzaileak = mysqli_query($mysqli, "SELECT * FROM Galdera" );
